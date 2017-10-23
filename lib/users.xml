@@ -1,0 +1,11 @@
+<object-stream>
+  <list>
+    <model.Users>
+      <firstName>Eoin</firstName>
+      <lastName>Kelly</lastName>
+      <age>38</age>
+      <gender>M</gender>
+      <occupation>Student</occupation>
+    </model.Users>
+  </list>
+</object-stream>
