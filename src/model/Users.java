@@ -1,5 +1,7 @@
 package model;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
+
 public class Users {
 	public String firstName;
 	public String lastName;
@@ -17,6 +19,15 @@ public class Users {
 		this.age		= age;
 		this.gender		= gender;
 		this.occupation	= occupation;
+	}
+	
+	public String toString() {
+		return toStringHelper(this).addValue(firstName)
+								   .addValue(lastName)
+								   .addValue(age)
+								   .addValue(gender)
+								   .addValue(occupation)
+								   .toString();
 	}
 	
 	
