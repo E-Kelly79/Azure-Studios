@@ -7,27 +7,32 @@ import java.util.Map;
 import model.Users;
 
 public class AzureFlimAPI {
-	private Map<String, Users> users = new HashMap<>();
+	private Map<Long, Users> usersIndex = new HashMap<>();
+	private Map<String, Users> usersName = new HashMap<>();
+	
 	
 	public Collection<Users> getUsers(){
-		return users.values();
+		return usersIndex.values();
 	}
 	
 	public void deleteUsers() {
-		users.clear();
+		usersIndex.clear();
+		usersName.clear();
 	}
 	
 	public Users createUser(String firstName, String lastName, int age, char gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
-		users.put(firstName,user);
+		usersIndex.put(user.id,user);
+		usersName.put(firstName, user);
 		return user;
 	}
 	
-	public Users getUser(String name) {
-		return users.get(name);
+	public Users getUser(Long id) {
+		return usersIndex.get(id);
 	}
 	
-	public void deleteUser(String name) {
-		users.remove(name);
+	public void deleteUser(Long id) {
+		Users user = usersIndex.remove(id);
+		usersName.remove(user.firstName);
 	}
 }

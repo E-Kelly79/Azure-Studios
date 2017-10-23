@@ -5,6 +5,8 @@ import com.google.common.base.Objects;
 
 
 public class Users {
+	static Long counter = (long) 01;
+	public Long id = (long) 0;
 	public String firstName;
 	public String lastName;
 	public int age;
@@ -16,6 +18,7 @@ public class Users {
 	}
 	
 	public Users(String firstName, String lastName, int age, char gender, String occupation) {
+		this.id = counter++;
 		this.firstName 	= firstName;
 		this.lastName 	= lastName;
 		this.age		= age;

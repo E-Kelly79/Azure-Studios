@@ -15,10 +15,18 @@ public class Azure {
 		azure.createUser("Emma", "Martin", 31, 'F', "Student");
 		
 		
+		
 		FileLogger logger = FileLogger.getLogger();
 		logger.log("Creating User List");
 		
 		Collection<Users> users = azure.getUsers();
+		System.out.println(users);
+		
+		Users eoin = azure.getUser((long) 1);
+		System.out.println(eoin);
+		
+		azure.deleteUser(eoin.id);
+		users = azure.getUsers();
 		System.out.println(users);
 		
 		logger.log("Serializing contacts to XML");
