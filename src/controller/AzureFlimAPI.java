@@ -1,15 +1,16 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.Users;
 
 public class AzureFlimAPI {
-	private List<Users> users = new ArrayList<>();
+	private Map<String, Users> users = new HashMap<>();
 	
-	public List<Users> getUsers(){
-		return users;
+	public Collection<Users> getUsers(){
+		return users.values();
 	}
 	
 	public void deleteUsers() {
@@ -18,28 +19,15 @@ public class AzureFlimAPI {
 	
 	public Users createUser(String firstName, String lastName, int age, char gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
-		users.add(user);
+		users.put(firstName,user);
 		return user;
 	}
 	
 	public Users getUser(String name) {
-		for(Users user: users) {
-			if(name.equalsIgnoreCase(user.firstName) || name.equalsIgnoreCase(user.lastName)) {
-				return user;
-			}
-		}
-		return null;
+		return users.get(name);
 	}
 	
 	public void deleteUser(String name) {
-		Users foundUser = null;
-		for(Users user: users) {
-			if(name.equalsIgnoreCase(user.firstName) || name.equalsIgnoreCase(user.lastName)) {
-				foundUser = user;
-			}
-			if(foundUser != null) {
-				users.remove(foundUser);
-			}
-		}
+		users.remove(name);
 	}
 }

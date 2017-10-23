@@ -1,13 +1,7 @@
 package controller;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+import java.util.Collection;
 
 import model.Users;
 import utils.FileLogger;
@@ -24,7 +18,7 @@ public class Azure {
 		FileLogger logger = FileLogger.getLogger();
 		logger.log("Creating User List");
 		
-		List<Users> users = azure.getUsers();
+		Collection<Users> users = azure.getUsers();
 		System.out.println(users);
 		
 		logger.log("Serializing contacts to XML");

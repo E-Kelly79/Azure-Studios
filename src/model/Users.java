@@ -1,6 +1,8 @@
 package model;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
+import com.google.common.base.Objects;
+
 
 public class Users {
 	public String firstName;
@@ -21,6 +23,7 @@ public class Users {
 		this.occupation	= occupation;
 	}
 	
+	@Override
 	public String toString() {
 		return toStringHelper(this).addValue(firstName)
 								   .addValue(lastName)
@@ -28,6 +31,11 @@ public class Users {
 								   .addValue(gender)
 								   .addValue(occupation)
 								   .toString();
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(this.firstName, this.lastName, this.age, this.gender, this.occupation);
 	}
 	
 	
