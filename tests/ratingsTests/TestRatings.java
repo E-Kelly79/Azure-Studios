@@ -2,6 +2,7 @@ package ratingsTests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static model.Fixtures.rating;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,38 +12,23 @@ import model.Ratings;
 
 public class TestRatings {
 	
-	private Ratings one;
-	private Ratings two;
-	
-	@Before
-	public void setup() {
-		one = new Ratings(1L, 2L, 3);
-		two = new Ratings(2L, 3L, 4);
-	}
-	
-	@After
-	public void tearDown() {
-		one = two = null;
-	}
 	
 	@Test
 	public void testCreate() {
-		assertEquals(1L, one.userId,01);
-		assertEquals(2L, one.movieId, 01);
-		assertEquals(3, one.rating);
+		assertEquals(0.001 ,1L, rating[0].userId);
+		assertEquals(0.001,2L, rating[0].movieId);
+		assertEquals(3, rating[0].rating);
 	}
 
 	@Test
 	public void testIds() {
-		Ratings one = new Ratings(1L, 2L, 3);
-		Ratings two = new Ratings(2L, 3L, 4);
-		assertNotEquals(one.id, two.id);
+		
+		assertNotEquals(rating[0].id, rating[1].id);
 	}
 	
 	@Test
 	public void testToString() {
-		Ratings one = new Ratings(1L, 2L, 3);
-		assertEquals("Ratings{6, 1, 2, 3}", one.toString());
+		assertEquals("Ratings{"+rating[0].id +", 1, 2, 3}", rating[0].toString());
 	}
 
 }

@@ -33,4 +33,16 @@ public class Ratings {
 	public int hashCode() {
 		return Objects.hashCode(this.id, this.userId, this.movieId, this.rating);
 	}
+	
+	@Override
+	  public boolean equals(final Object obj) {
+	    if (obj instanceof Ratings){
+	      final Ratings other = (Ratings) obj;
+	      return Objects.equal(userId, other.userId) 
+	          && Objects.equal(movieId, other.movieId)
+	          && Objects.equal(rating, other.rating);
+	    }else{
+	      return false;
+	    }
+	  }
 }

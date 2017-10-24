@@ -1,6 +1,7 @@
 package userTests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,10 +12,6 @@ import model.Users;
 import model.Fixtures;
 
 public class TestUsers {
-	private  Users[] users = {
-			new Users("Eoin", "Kelly", 38, 'M', "Student"),
-			new Users("Emma", "Martin", 32, 'F', "Student")
-	};
 
 	Users eoin = new Users("Eoin", "Kelly", 38, 'M', "Student");
 	
@@ -30,15 +27,24 @@ public class TestUsers {
 	}
 	
 	@Test
-	  public void testIds()
-	  {
-	    Set<Long> ids = new HashSet<>();
-	    for (Users user : users)
-	    {
-	      ids.add(user.id);
-	    }
-	    assertEquals (users.length, ids.size());
-	  }
+	public void testEquals() {
+		Users eoin = new Users("Eoin", "Kelly", 38, 'M', "Student");
+		Users emma = new Users("Emma", "Martin", 31, 'F', "Student");
+		assertEquals(eoin, eoin);
+		assertEquals(emma, emma);
+		assertNotEquals(eoin, emma);
+	}
+	
+//	@Test
+//	  public void testIds()
+//	  {
+//	    Set<Long> ids = new HashSet<>();
+//	    for (Users user : users)
+//	    {
+//	      ids.add(user.id);
+//	    }
+//	    assertEquals (users.length, ids.size());
+//	  }
 	
 	@Test
 	public void testToString() {

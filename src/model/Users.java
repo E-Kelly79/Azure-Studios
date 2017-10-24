@@ -48,5 +48,19 @@ public class Users {
 		return Objects.hashCode(this.firstName, this.lastName, this.age, this.gender, this.occupation);
 	}
 	
+	 @Override
+	  public boolean equals(final Object obj){
+	    if (obj instanceof Users){
+	      final Users other = (Users) obj;
+	      return Objects.equal(firstName, other.firstName) 
+	          && Objects.equal(lastName,  other.lastName)
+	          && Objects.equal(age,     other.age)
+	          && Objects.equal(gender,  other.gender)
+	          && Objects.equal(occupation,  other.occupation);
+	    }else{
+	      return false;
+	    }
+	  }
+	
 	
 }
