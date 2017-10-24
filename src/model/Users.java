@@ -1,6 +1,10 @@
 package model;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.common.base.Objects;
 
 
@@ -12,6 +16,8 @@ public class Users {
 	public int age;
 	public char gender;
 	public String occupation;
+	
+	  public Map<Long, Movies> movieObject = new HashMap<>();
 	
 	public Users() {
 		

@@ -15,3 +15,6 @@ Finished - shutting Down
 Creating User List
 Serializing contacts to XML
 Finished - shutting Down
+Creating User List
+Serializing contacts to XML
+Finished - shutting Down
