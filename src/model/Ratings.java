@@ -6,20 +6,17 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import com.google.common.base.Objects;
 
 public class Ratings {
-	static Long   counter = 0l;
+	static Long counter = 0l;
 
-	  public Long   id = (long) 0;
+	public Long id = (long) 0;
 
-	  public Long userId = (long) 0;
-	  public Long movieId = (long) 0;
-	  public int rating =0;
+	public Long userId = (long) 0;
+	public Long movieId = (long) 0;
+	public int rating = 0;
 
-	  
+	public Ratings() {
+	}
 
-	  public Ratings(){
-	  }
-
-	 
 	public Ratings(Long userID, Long movieId, int rating) {
 		this.id = counter++;
 		this.userId = userID;
@@ -27,21 +24,13 @@ public class Ratings {
 		this.rating = rating;
 	}
 
-
+	@Override
+	public String toString() {
+		return toStringHelper(this).addValue(id).addValue(userId).addValue(movieId).addValue(rating).toString();
+	}
 
 	@Override
-	  public String toString()
-	  {
-	    return toStringHelper(this).addValue(id)
-	                               .addValue(userId)
-	                               .addValue(movieId)
-	                               .addValue(rating)
-	                               .toString();
-	  }
-
-	  @Override  
-	  public int hashCode()  
-	  {  
-	     return Objects.hashCode(this.id, this.userId, this.movieId, this.rating);  
-	  } 
+	public int hashCode() {
+		return Objects.hashCode(this.id, this.userId, this.movieId, this.rating);
+	}
 }

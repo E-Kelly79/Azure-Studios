@@ -42,7 +42,7 @@ public class TestUsers {
 	
 	@Test
 	public void testToString() {
-		assertEquals("User{" + eoin.id + "Eoin, Kelly, " + 38 + ", " + "M,"+ "Student}", eoin.toString());
+		assertEquals("Users{" + eoin.id + ", Eoin, Kelly, 38, M, Student}", eoin.toString());
 	}
 	
 	
