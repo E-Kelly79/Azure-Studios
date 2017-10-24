@@ -28,7 +28,8 @@ public class Users {
 	
 	@Override
 	public String toString() {
-		return toStringHelper(this).addValue(firstName)
+		return toStringHelper(this).addValue(id)
+								   .addValue(firstName)
 								   .addValue(lastName)
 								   .addValue(age)
 								   .addValue(gender)
