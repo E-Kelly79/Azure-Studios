@@ -13,8 +13,8 @@ public class Users {
 	public Long id = (long) 0;
 	public String firstName;
 	public String lastName;
-	public int age;
-	public char gender;
+	public String age;
+	public String gender;
 	public String occupation;
 	
 	  public Map<Long, Movies> movieObject = new HashMap<>();
@@ -23,7 +23,7 @@ public class Users {
 		
 	}
 	
-	public Users(String firstName, String lastName, int age, char gender, String occupation) {
+	public Users(String firstName, String lastName, String age, String gender, String occupation) {
 		this.id = counter++;
 		this.firstName 	= firstName;
 		this.lastName 	= lastName;

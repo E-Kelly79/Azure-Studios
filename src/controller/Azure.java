@@ -1,42 +1,39 @@
 package controller;
 
-import java.io.IOException;
+import java.io.File;
 import java.util.Collection;
 
 import model.Users;
-import utils.FileLogger;
+import utils.Serializer;
+import utils.XMLSerializer;
 
 public class Azure {
+	public AzureFlimAPI azure;
+	
+	public Azure() throws Exception {
+		File movies = new File("./lib/users5.xml");
+		Serializer serializer = new XMLSerializer(movies);
+		azure = new AzureFlimAPI(serializer);
+		if (movies.isFile()) {
+			azure.load();
+		}
+	}
 
-	public static void main(String[] args) throws IOException {
-		AzureFlimAPI azure = new AzureFlimAPI();
-		
-		azure.createUser("Eoin", "Kelly", 38, 'M', "Student");
-		azure.createUser("Emma", "Martin", 31, 'F', "Student");
-		
-		
-		
-		FileLogger logger = FileLogger.getLogger();
-		logger.log("Creating User List");
-		
-		Collection<Users> users = azure.getUsers();
+	public static void main(String[] args) throws Exception {
+		Azure main = new Azure();
+
+		main.azure.initalLoad();
+//		main.azure.createUser("Eoin", "Kelly", "38", "M", "Student");
+//		main.azure.createUser("Emma", "Martin", "31", "F", "Student");
+//		main.azure.createUser("Keith", "Maher", "31", "M", "Programmer");
+
+		Collection<Users> users = main.azure.getUsers();
 		System.out.println(users);
-		
-		Users eoin = azure.getUser((long) 1);
-		System.out.println(eoin);
-		
-		azure.deleteUser(eoin.id);
-		users = azure.getUsers();
-		System.out.println(users);
-		
-		logger.log("Serializing contacts to XML");
-//		XStream xstream = new XStream(new DomDriver());
-//		ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("./lib/users.xml"));
-//	    out.writeObject(users);
-//	    out.close();    
-		
-		
-		logger.log("Finished - shutting Down");
+
+		Users eoin = main.azure.getUserByName("Emma");
+		//main.azure.createMovie(eoin.id, "Grilmin", "1993", "Grimlock.com");
+
+		main.azure.store();
 
 	}
 

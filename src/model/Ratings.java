@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import static com.google.common.base.MoreObjects.toStringHelper;
 import com.google.common.base.Objects;
 
