@@ -36,7 +36,7 @@ public class AzureAPUITests {
 	@Test
 	public void testUser() {
 		assertEquals(users.length, azure.getUsers().size());
-		azure.createUser("Eoin", "Kelly", 38, 'M', "Student");
+		azure.createUser("Eoin", "Kelly", "38", "M", "Student");
 		assertEquals(users.length + 1, azure.getUsers().size());
 		assertEquals(users[0], azure.getUserByName(users[0].firstName));
 	}
@@ -52,9 +52,9 @@ public class AzureAPUITests {
 	}
 
 	public void testUserEmpty() {
-		Users eoin = new Users("Eoin", "Kelly", 38, 'M', "Student");
+		Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
 		assertEquals(0, azure.getUsers().size());
-		azure.createUser("Eoin", "Kelly", 38, 'M', "Student");
+		azure.createUser("Eoin", "Kelly", "38", "M", "Student");
 		assertEquals(1, azure.getUsers().size());
 	}
 
@@ -74,5 +74,5 @@ public class AzureAPUITests {
 		assertEquals(movies[0], returnedMovie);
 		assertNotSame(movies[0], returnedMovie);
 	}
-
+	
 }
