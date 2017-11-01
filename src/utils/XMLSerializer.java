@@ -34,39 +34,39 @@ public class XMLSerializer implements Serializer
   @SuppressWarnings("unchecked")
   public void read() throws Exception
   {
-    ObjectInputStream is = null;
+    ObjectInputStream inputFile = null;
 
     try
     {
     	
       XStream xstream = new XStream(new DomDriver());
-      is = xstream.createObjectInputStream(new FileReader(file));
-      stack = (Stack) is.readObject();
+      inputFile = xstream.createObjectInputStream(new FileReader(file));
+      stack = (Stack) inputFile.readObject();
     }
     finally
     {
-      if (is != null)
+      if (inputFile != null)
       {
-        is.close();
+    	  inputFile.close();
       }
     }
   }
 
   public void write() throws Exception
   {
-    ObjectOutputStream os = null;
+    ObjectOutputStream outputFile = null;
 
     try
     {
       XStream xstream = new XStream(new DomDriver());
-      os = xstream.createObjectOutputStream(new FileWriter(file));
-      os.writeObject(stack);
+      outputFile = xstream.createObjectOutputStream(new FileWriter(file));
+      outputFile.writeObject(stack);
     }
     finally
     {
-      if (os != null)
+      if (outputFile != null)
       {
-        os.close();
+        outputFile.close();
       }
     }
   }

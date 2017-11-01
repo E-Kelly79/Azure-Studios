@@ -1,13 +1,13 @@
 package model;
 
-
-import static com.google.common.base.MoreObjects.toStringHelper;
 import com.google.common.base.Objects;
+import static com.google.common.base.MoreObjects.toStringHelper;
+
 
 public class Ratings {
 	static Long counter = 0l;
 
-	public Long id = (long) 0;
+	public Long id;
 
 	public Long userId = (long) 0;
 	public Long movieId = (long) 0;

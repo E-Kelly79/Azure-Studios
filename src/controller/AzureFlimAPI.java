@@ -1,27 +1,29 @@
 package controller;
 
+import java.util.Collection;
+import com.google.common.base.Optional;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+import utils.Serializer;
+import model.Movies;
+import model.Ratings;
+import model.Users;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
-
-import com.google.common.base.Optional;
-
-import model.Movies;
-import model.Ratings;
-import model.Users;
-import utils.Serializer;
 
 public class AzureFlimAPI {
 	
 	private Serializer serializer;
-	private Map<Long, Users> usersIndex = new HashMap<>();
-	private Map<String, Users> usersName = new HashMap<>();
-	private Map<Long, Movies> movieIndex = new HashMap<>();
+	private Map<Long, Users> 	usersIndex = new HashMap<>();
+	private Map<String, Users> 	usersName = new HashMap<>();
+	private Map<Long, Movies> 	movieIndex = new HashMap<>();
 
 	public AzureFlimAPI() {
 
@@ -29,6 +31,40 @@ public class AzureFlimAPI {
 
 	public AzureFlimAPI(Serializer serializer) {
 		this.serializer = serializer;
+	}
+	
+	public void initalLoad() throws IOException {
+		String delims = "[|]";
+		Scanner scanner = new Scanner(new File("./lib/users5.dat"));
+		while (scanner.hasNextLine()) {
+			String userDetails = scanner.nextLine();
+			// parse user details string
+			String[] userTokens = userDetails.split(delims);
+
+			if (userTokens.length == 7) {
+				createUser(userTokens[1], userTokens[2], userTokens[3], userTokens[4], userTokens[5]);
+			} else {
+				scanner.close();
+				throw new IOException("Invalid member length: " + userTokens.length);
+			}
+		}
+		scanner.close();
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public void load() throws Exception {
+		serializer.read();
+		usersIndex 		= (Map<Long, Users>) serializer.pop();
+		movieIndex 		= (Map<Long, Movies>) serializer.pop();
+		usersName 		= (Map<String, Users>) serializer.pop();
+	}
+	
+	public void store() throws Exception {
+		serializer.push(usersIndex);
+		serializer.push(usersName);
+		serializer.push(movieIndex);
+		serializer.write(); 
 	}
 
 	public Collection<Users> getUsers() {
@@ -46,13 +82,13 @@ public class AzureFlimAPI {
 		usersName.put(firstName, user);
 		return user;
 	}
-
-	public Users getUser(Long id) {
-		return usersIndex.get(id);
-	}
-
+	
 	public Users getUserByName(String name) {
 		return usersName.get(name);
+	}
+
+	public Users getUserById(Long id) {
+		return usersIndex.get(id);
 	}
 
 	public void deleteUser(Long id) {
@@ -61,9 +97,10 @@ public class AzureFlimAPI {
 	}
 
 	public Movies createMovie(Long id, String title, String year, String url) {
-		Movies movie = new Movies(title, year, url);
+		Movies movie =null; 
 		Optional<Users> user = Optional.fromNullable(usersIndex.get(id));
 		if (user.isPresent()) {
+			movie = new Movies(title, year, url);
 			user.get().movieObject.put(movie.id, movie);
 			movieIndex.put(movie.id, movie);
 		}
@@ -82,38 +119,5 @@ public class AzureFlimAPI {
 	}
 	
 	
-	public void load() throws Exception {
-		serializer.read();
-		usersIndex 		= (Map<Long, Users>) serializer.pop();
-		movieIndex 		= (Map<Long, Movies>) serializer.pop();
-		usersName 	= (Map<String, Users>) serializer.pop();
-	}
 	
-	
-
-	public void store() throws Exception {
-		serializer.push(usersIndex);
-		serializer.push(usersName);
-		serializer.push(movieIndex);
-		serializer.write(); 
-	}
-	
-	public void initalLoad() throws IOException {
-		 String delims = "[|]";
-	        Scanner scanner = new Scanner(new File("./lib/users5.dat"));
-	        while (scanner.hasNextLine()) {
-	            String userDetails = scanner.nextLine();
-	            // parse user details string
-	            String[] userTokens = userDetails.split(delims);
-
-	            if (userTokens.length == 7) {
-	               createUser(userTokens[1], userTokens[2], userTokens[3], userTokens[4], userTokens[5]);
-	            } else {
-	                scanner.close();
-	                throw new IOException("Invalid member length: " + userTokens.length);
-	            }
-	        }
-	        scanner.close();
-	}
-
 }

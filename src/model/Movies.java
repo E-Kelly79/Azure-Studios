@@ -1,17 +1,16 @@
 package model;
 
-import com.google.common.base.Objects;
-import static com.google.common.base.MoreObjects.toStringHelper;
-
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.base.Objects;
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 public class Movies {
 	
 	
 	static Long counter = 0l;
 
-	public Long id = (long) 0;
+	public Long id;
 	public String title;
 	public String year;
 	public String url;
@@ -23,10 +22,10 @@ public class Movies {
 
 	public Movies (String title, String year, String url)
 	  {
-	    this.id        = counter++;
+	    this.id     = counter++;
 	    this.title  = title;
-	    this.year = year;
-	    this.url = url;
+	    this.year 	= year;
+	    this.url 	= url;
 	  }
 
 	@Override
@@ -44,4 +43,21 @@ public class Movies {
 	public int hashCode() {
 		return Objects.hashCode(this.id, this.title, this.year, this.url);
 	}
+	
+	@Override
+	  public boolean equals(final Object obj)
+	  {
+	    if (obj instanceof Movies)
+	    {
+	      final Movies other = (Movies) obj;
+	      return Objects.equal(title, other.title) 
+	          && Objects.equal(year,  other.year)
+	          && Objects.equal(url,  other.url)
+	          && Objects.equal(theMovies,     other.theMovies);    
+	    }
+	    else
+	    {
+	      return false;
+	    }
+	  }
 }
