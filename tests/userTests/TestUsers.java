@@ -16,9 +16,9 @@ public class TestUsers {
 	Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
 	
 	
+	
 	@Test
 	public void testCreate() {
-		
 		assertEquals("Eoin", eoin.firstName);
 		assertEquals("Kelly", eoin.lastName);
 		assertEquals("38", eoin.age);

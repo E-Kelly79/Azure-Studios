@@ -12,11 +12,12 @@ import org.junit.Test;
 public class TestRatings {
 	
 	
+	
 	@Test
 	public void testCreate() {
-		assertEquals(0.001 ,1L, rating[0].userId);
-		assertEquals(0.001,2L, rating[0].movieId);
-		assertEquals(3, rating[0].rating);
+		assertEquals(1 , 1L, 	rating[0].userId);
+		assertEquals(1, 2L, 	rating[0].movieId);
+		assertEquals(3, 		rating[0].rating);
 	}
 
 	@Test

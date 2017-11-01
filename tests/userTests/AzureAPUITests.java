@@ -34,7 +34,7 @@ public class AzureAPUITests {
 	}
 
 	@Test
-	public void testUser() {
+	public void addUser() {
 		assertEquals(users.length, azure.getUsers().size());
 		azure.createUser("Eoin", "Kelly", "38", "M", "Student");
 		assertEquals(users.length + 1, azure.getUsers().size());
