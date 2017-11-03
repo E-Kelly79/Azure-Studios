@@ -35,7 +35,7 @@ public class Movies {
 				.addValue(title)
 				.addValue(year)
 				.addValue(url)
-				.addValue(theMovies)
+				.addValue(theMovies + "\n")
 				.toString();
 	}
 

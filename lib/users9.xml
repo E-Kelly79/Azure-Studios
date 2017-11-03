@@ -1,0 +1,105 @@
+<object-stream>
+  <java.util.Stack serialization="custom">
+    <unserializable-parents/>
+    <vector>
+      <default>
+        <capacityIncrement>0</capacityIncrement>
+        <elementCount>9</elementCount>
+        <elementData>
+          <map>
+            <entry>
+              <long>1</long>
+              <model.Users>
+                <id>1</id>
+                <firstName>Leonard</firstName>
+                <lastName>Hernandez</lastName>
+                <age>24</age>
+                <gender>M</gender>
+                <occupation>technician</occupation>
+                <movieObject/>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>2</long>
+              <model.Users>
+                <id>2</id>
+                <firstName>Melody</firstName>
+                <lastName>Roberson</lastName>
+                <age>53</age>
+                <gender>F</gender>
+                <occupation>other</occupation>
+                <movieObject/>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>3</long>
+              <model.Users>
+                <id>3</id>
+                <firstName>Gregory</firstName>
+                <lastName>Newton</lastName>
+                <age>23</age>
+                <gender>M</gender>
+                <occupation>writer</occupation>
+                <movieObject/>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>4</long>
+              <model.Users>
+                <id>4</id>
+                <firstName>Oliver</firstName>
+                <lastName>George</lastName>
+                <age>24</age>
+                <gender>M</gender>
+                <occupation>technician</occupation>
+                <movieObject/>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>5</long>
+              <model.Users>
+                <id>5</id>
+                <firstName>Jenna</firstName>
+                <lastName>Parker</lastName>
+                <age>33</age>
+                <gender>F</gender>
+                <occupation>other</occupation>
+                <movieObject/>
+              </model.Users>
+            </entry>
+          </map>
+          <map>
+            <entry>
+              <string>Jenna</string>
+              <model.Users reference="../../../map/entry[5]/model.Users"/>
+            </entry>
+            <entry>
+              <string>Oliver</string>
+              <model.Users reference="../../../map/entry[4]/model.Users"/>
+            </entry>
+            <entry>
+              <string>Melody</string>
+              <model.Users reference="../../../map/entry[2]/model.Users"/>
+            </entry>
+            <entry>
+              <string>Leonard</string>
+              <model.Users reference="../../../map/entry/model.Users"/>
+            </entry>
+            <entry>
+              <string>Gregory</string>
+              <model.Users reference="../../../map/entry[3]/model.Users"/>
+            </entry>
+          </map>
+          <map/>
+          <map reference="../map"/>
+          <map reference="../map[2]"/>
+          <map reference="../map[3]"/>
+          <map reference="../map"/>
+          <map reference="../map[2]"/>
+          <map reference="../map[3]"/>
+          <null/>
+        </elementData>
+      </default>
+    </vector>
+  </java.util.Stack>
+</object-stream>
