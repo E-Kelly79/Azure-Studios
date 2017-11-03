@@ -1,5 +1,9 @@
 package model;
-
+/*
+ * Author: Eoin Kelly 
+ * Student No: 20074820
+ * Date: 03/11/17
+ */
 import java.util.ArrayList;
 import java.util.List;
 import com.google.common.base.Objects;

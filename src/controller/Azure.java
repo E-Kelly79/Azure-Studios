@@ -1,5 +1,9 @@
 package controller;
-
+/*
+ * Author: Eoin Kelly 
+ * Student No: 20074820
+ * Date: 03/11/17
+ */
 import java.io.File;
 import java.util.Collection;
 

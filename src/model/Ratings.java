@@ -1,5 +1,9 @@
 package model;
-
+/*
+ * Author: Eoin Kelly 
+ * Student No: 20074820
+ * Date: 03/11/17
+ */
 import com.google.common.base.Objects;
 import static com.google.common.base.MoreObjects.toStringHelper;
 

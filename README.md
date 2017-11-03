@@ -34,11 +34,16 @@ Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
 	}
 ```
 
+## GUI
+i went and made a small gui that will work for the users this was built with javafx i used a borderPane to set out the window then added a menuBar with a gridpane tomarkup the userinput fields
+
+
 ## Built With
 
 * [Xstream](http://x-stream.github.io/) - Used for reading and writing files
 * [Gauva](https://github.com/google/guava) - Helpers for string methods
 * [cliche](https://sourceforge.net/projects/cliche/) - Used to make commands in the command line
+* [Javafx](http://www.oracle.com/technetwork/java/javafx/downloads/index.html) - Used to make Graphical User Interfaces
 
 ## Versioning
 This is the first version of my assignment
