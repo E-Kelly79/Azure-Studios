@@ -1,20 +1,21 @@
 package userTests;
 
+import static model.Fixtures.movies;
+import static model.Fixtures.users;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.common.base.Optional;
+
 import controller.AzureFlimAPI;
 import model.Movies;
 import model.Users;
-
-import static model.Fixtures.users;
-import static model.Fixtures.movies;
-import static model.Fixtures.rating;
 
 public class AzureAPUITests {
 
@@ -25,6 +26,10 @@ public class AzureAPUITests {
 		azure = new AzureFlimAPI();
 		for (Users user : users) {
 			azure.createUser(user.firstName, user.lastName, user.age, user.gender, user.occupation);
+		}
+		
+		for (Movies movie : movies) {
+			azure.createMovie(movie.id, movie.title, movie.year, movie.url);
 		}
 	}
 
@@ -68,12 +73,27 @@ public class AzureAPUITests {
 
 	@Test
 	public void testAddMovie() {
-		// Users eoin = azure.getUserByName("Eoin");
-		// Movies movie = azure.createMovies(movies[0].title, movies[0].year,
-		// movies[0].url);
-		// Movies returnedMovie = azure.getMovie(movie.id);
-		// assertEquals(movies[0], returnedMovie);
-		// assertNotSame(movies[0], returnedMovie);
+		assertEquals(movies.length, azure.getMovies().size());
+		azure.createMovie(1L, "Saw", "2017", "Saw.com");
+		assertEquals(movies.length + 1, azure.getMovies().size());
+		assertEquals(movies[0], azure.getMovieByTitle(movies[0].title));
+		
+	}
+	
+	@Test
+	public void testUserLogin() {
+		//Checking with admin eoin login
+		assertTrue(azure.login(users[0].firstName, users[0].lastName));
+		assertEquals(azure.currentUser.get(), users[0]);
+		
+		//check logout
+		azure.logout();
+		assertEquals(azure.currentUser, Optional.absent());
+		
+		//check login fail
+		assertFalse(azure.login(users[0].firstName, "paddy"));
+		assertEquals(azure.currentUser, Optional.absent());
+		
 	}
 
 }

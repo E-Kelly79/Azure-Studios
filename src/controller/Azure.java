@@ -1,10 +1,12 @@
 package controller;
+
 /*
  * Author: Eoin Kelly 
  * Student No: 20074820
  * Date: 03/11/17
  */
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 
 import com.google.common.base.Optional;
@@ -12,13 +14,16 @@ import com.google.common.base.Optional;
 import asg.cliche.Command;
 import asg.cliche.Param;
 import asg.cliche.Shell;
+import asg.cliche.ShellDependent;
 import asg.cliche.ShellFactory;
 import model.Movies;
 import model.Users;
 import utils.Serializer;
 import utils.XMLSerializer;
 
-public class Azure {
+public class Azure implements ShellDependent {
+	private static final String ADMIN = "admin";
+	private Shell shell;
 	public AzureFlimAPI azure;
 
 	// Make a constructor of the azure clas to load the file for read and writing
@@ -31,9 +36,31 @@ public class Azure {
 		}
 	}
 
+	public void cliSetShell(Shell shell) {
+		this.shell = shell;
+	}
+
+	@Command(description = "Log in")
+	public void logIn(@Param(name = "firstname") String firstName, @Param(name = "lastName") String lastName) throws IOException {
+		if (azure.login(firstName, lastName) && azure.currentUser.isPresent()) {
+			Users user = azure.currentUser.get();
+			System.out.println("You are logged in as " + user.firstName + user.lastName);
+			if (user.role != null && user.role.equals(ADMIN)) {
+				AdminMenu adminMenu = new AdminMenu(azure, user.firstName);
+				ShellFactory.createSubshell(user.firstName, shell, "admin", adminMenu).commandLoop();
+			} else {
+				DefaultMenu defaultMenu = new DefaultMenu(azure, user);
+				ShellFactory.createSubshell(user.firstName, shell, "default", defaultMenu).commandLoop();
+			}
+		} else {
+			System.out.println("Unknown username/password.");
+		}
+	}
+
 	@Command(description = "Get all users details")
 	public void getAllUsers() {
 		Collection<Users> user = azure.getUsers();
+
 		System.out.println(user);
 	}
 

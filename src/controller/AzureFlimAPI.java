@@ -1,25 +1,24 @@
 package controller;
+import java.io.File;
+import java.io.IOException;
 /*
- * Author: Eoin Kelly 
- * Student No: 20074820
- * Date: 03/11/17
+ * Author Eoin Kelly 
+ * Date 03/11/17
  */
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
 import com.google.common.base.Optional;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import utils.Serializer;
 import model.Movies;
 import model.Ratings;
 import model.Users;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import java.util.Scanner;
+import utils.Serializer;
 
 public class AzureFlimAPI implements azureInterface {
 
@@ -28,6 +27,7 @@ public class AzureFlimAPI implements azureInterface {
 	private Map<String, Users> usersName = new HashMap<>();
 	private Map<Long, Movies> movieIndex = new HashMap<>();
 	private Map<String, Movies> movieTitle = new HashMap<>();
+	public  Optional<Users> currentUser;
 
 	public AzureFlimAPI() {
 
@@ -36,8 +36,28 @@ public class AzureFlimAPI implements azureInterface {
 	public AzureFlimAPI(Serializer serializer) {
 		this.serializer = serializer;
 	}
+	
+	public boolean login(String firstName, String lastName) {
+		Optional<Users> user = Optional.fromNullable(usersName.get(firstName));
+		if(user.isPresent() && user.get().lastName.equals(lastName)) {
+			currentUser = user;
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	public void logout() {
+		Optional<Users> user = currentUser;
+		if(user.isPresent()) {
+			currentUser = Optional.absent();
+		}
+	}
 
-	// This method will read in data from the users.dat file and items file and add
+	
+
+	// This method will read in data from the users.dat file and items file and
 	// will create new users and movies
 	public void initalLoad() throws IOException {
 		String delims = "[|]";
@@ -91,22 +111,32 @@ public class AzureFlimAPI implements azureInterface {
 
 	// Return all users in file
 	public Collection<Users> getUsers() {
+		List<Entry<Long, Users>> user = new LinkedList<Entry<Long, Users>>(usersIndex.entrySet());
 		return usersIndex.values();
 	}
 
 	// delete all users
 	public void deleteUsers() {
-		usersIndex.clear();
-		usersName.clear();
+		Users user = new Users();
+		if(user.role== "admin") {
+			usersIndex.clear();
+			usersName.clear();
+		}else {
+			
+		}
 	}
 
 	// create a new users using @Param firstname, lastname, age, gender, occupation
 	@Override
 	public Users createUser(String firstName, String lastName, String age, String gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
-		usersIndex.put(user.id, user);
-		usersName.put(firstName, user);
-		return user;
+		if(user.role== "admin") {
+			usersIndex.put(user.id, user);
+			usersName.put(firstName, user);
+			return user;
+		}else {
+			return null;
+		}
 	}
 
 	// Returns user information when searching for there first name

@@ -1,4 +1,5 @@
 package model;
+import java.util.Comparator;
 /*
  * Author: Eoin Kelly 
  * Student No: 20074820
@@ -7,9 +8,11 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 import com.google.common.base.Objects;
+import com.google.common.base.Optional;
+
 import static com.google.common.base.MoreObjects.toStringHelper;
 
-public class Users {
+public class Users implements Comparator<String>{
 	static Long counter = 01L;
 	public Long id;
 	public String firstName;
@@ -17,19 +20,26 @@ public class Users {
 	public String age;
 	public String gender;
 	public String occupation;
+	public String role;
 
 	public Map<Long, Movies> movieObject = new HashMap<>();
-
+	
 	public Users() {
+		
 	}
 
 	public Users(String firstName, String lastName, String age, String gender, String occupation) {
+		this(firstName, lastName, age, gender, occupation, "default");
+	}
+
+	public Users(String firstName, String lastName, String age, String gender, String occupation, String role) {
 		this.id = counter++;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
 		this.gender = gender;
 		this.occupation = occupation;
+		this.role=role;
 	}
 
 	@Override
@@ -55,6 +65,11 @@ public class Users {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public int compare(String s1, String s2) {
+		return s1.compareToIgnoreCase(s2);
 	}
 
 }
