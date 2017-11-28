@@ -126,7 +126,8 @@ public class AzureFlimAPI implements azureInterface {
 		}
 	}
 
-	// create a new users using @Param firstname, lastname, age, gender, occupation
+	
+	// create a new users using @Param firstname, lastname, age, gender, occupation  *hello*
 	@Override
 	public Users createUser(String firstName, String lastName, String age, String gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);

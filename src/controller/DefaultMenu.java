@@ -18,6 +18,7 @@ public class DefaultMenu {
 		this.user = user;
 	}
 	
+	//Return a name
 	public String getName() {
 		return name;
 	}

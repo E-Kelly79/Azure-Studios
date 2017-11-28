@@ -18,6 +18,7 @@ public class AdminMenu {
 		this.name = name;
 	}
 	
+	//retuns name
 	public String getName() {
 		return name;
 	}

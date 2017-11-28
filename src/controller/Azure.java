@@ -57,6 +57,7 @@ public class Azure implements ShellDependent {
 		}
 	}
 
+	//Just A command
 	@Command(description = "Get all users details")
 	public void getAllUsers() {
 		Collection<Users> user = azure.getUsers();
