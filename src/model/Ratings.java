@@ -12,8 +12,7 @@ public class Ratings {
 	static Long counter = 0l;
 
 	public Long id;
-
-	public Long userId = (long) 0;
+	 public Long userId = (long) 0;
 	public Long movieId = (long) 0;
 	public int rating = 0;
 

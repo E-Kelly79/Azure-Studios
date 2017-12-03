@@ -4,12 +4,13 @@ package model;
  * Student No: 20074820
  * Date: 03/11/17
  */
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 import com.google.common.base.Objects;
 import static com.google.common.base.MoreObjects.toStringHelper;
 
-public class Movies {
+public class Movies implements Comparable<Movies>{
 	
 	
 	static Long counter = 0l;
@@ -19,7 +20,7 @@ public class Movies {
 	public String year;
 	public String url;
 	
-	public List<Ratings> theMovies = new ArrayList<>();
+	public Map<Long, Ratings> theMoviesRatings = new HashMap<>();
 
 	public Movies() {
 	}
@@ -39,7 +40,6 @@ public class Movies {
 				.addValue(title)
 				.addValue(year)
 				.addValue(url)
-				.addValue(theMovies + "\n")
 				.toString();
 	}
 
@@ -49,19 +49,23 @@ public class Movies {
 	}
 	
 	@Override
-	  public boolean equals(final Object obj)
-	  {
+	  public boolean equals(final Object obj){
 	    if (obj instanceof Movies)
 	    {
 	      final Movies other = (Movies) obj;
 	      return Objects.equal(title, other.title) 
 	          && Objects.equal(year,  other.year)
-	          && Objects.equal(url,  other.url)
-	          && Objects.equal(theMovies,     other.theMovies);    
+	          && Objects.equal(url,  other.url);    
 	    }
 	    else
 	    {
 	      return false;
 	    }
 	  }
+	
+	public int compareTo(Movies movie) {
+		return this.title.compareTo(movie.title);
+	}
+	
+	
 }

@@ -1,10 +1,15 @@
 package controller;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeSet;
+
 import com.google.common.base.Optional;
 
 import asg.cliche.Command;
 import asg.cliche.Param;
 import model.Movies;
+import model.Ratings;
 import model.Users;
 
 public class DefaultMenu {
@@ -27,21 +32,88 @@ public class DefaultMenu {
 		this.name = name;
 	}
 	
+	/*=====================
+	 * Users
+	 ======================*/
+	
+	@Command(description = "Get all users sorted by there Name")
+	public void getAllUsers() {
+		TreeSet<Users> sortedUsers = new TreeSet<Users>();
+		sortedUsers.addAll(azureAPI.getUsers());
+		Iterator<Users> iter = sortedUsers.iterator();
+		while(iter.hasNext()) {
+			Users u = iter.next();
+			System.out.println(u.firstName + " " + u.lastName);
+		}
+	}
+	
 	@Command(description = "Get a Users detail")
-	public void getUser(@Param(name = "name") String firstName) {
-		Users user = azureAPI.getUserByName(firstName);
+	public void getUser(@Param(name = "name") Long id) {
+		Users user = azureAPI.getUserById(id);
 	    System.out.println(user);
 	}
 	
-	@Command(description = "Add a movie")
-	public void addActivity(@Param(name = "title") String title, @Param(name = "Year") String year, @Param(name = "url") String url) {
-		azureAPI.createMovie(user.id, title, year, url);
+	
+	/*=====================
+	 * Movies
+	 ======================*/
+	
+	@Command(description="Get a List of all movies sorted by there title")
+	public void getMovies(){
+		TreeSet<Movies> sortedMovies = new TreeSet<Movies>();
+		sortedMovies.addAll(azureAPI.getMovies());
+		Iterator<Movies> iter = sortedMovies.iterator();
+		while(iter.hasNext()) {
+			Movies u = iter.next();
+			System.out.println(u.title);
+		}
 	}
-	@Command(description = "Add ratings to a movie")
-	public void addLocation(@Param(name = "activity-id") Long id, @Param(name = "userId") Long userId, @Param(name = "movieId") Long movieId, @Param(name = "rating") int rating) {
-		Optional<Movies> movie = Optional.fromNullable(azureAPI.getMovie(id));
-	    if (movie.isPresent()) {
-	      azureAPI.addRatings(movie.get().id, userId, movieId, rating);
-	    }
+	
+	
+	@Command(description="Get a Movie by its ID")
+	public Movies getMovie(@Param(name="Movie Id") Long id){
+		return azureAPI.getMovie(id);
 	}
+	
+	
+	/*=====================
+	 * Ratings
+	 ======================*/
+	@Command(description = "Add a rating")
+	public void addRating(@Param(name = "userId") Long userId, @Param(name = "movieId") Long movieId, @Param(name = "rating") int rating) {
+		 azureAPI.addRatings(userId, movieId, rating);
+	}
+	
+	@Command(description="Get User Ratings")
+	public Map<Long, Ratings> getUserRating(@Param(name="User ID")long id){
+		return azureAPI.getUserRating(id);
+	}
+	
+	@Command(description="Get Movies Ratings")
+	public Map<Long,Ratings> getMovieRating(@Param(name="Movie Id")long id)
+	{
+		return azureAPI.getMovieRating(id);
+	}
+	
+	@Command(description="Return a Rating")
+	public Ratings getRating(@Param(name="Rating Id")long id){
+		return azureAPI.getRating(id);
+	}
+	
+	@Command(description="Get All Ratings")
+	public void getRatings(){
+		azureAPI.getRatings();
+	}
+	
+	@Command(description="Delete a Rating")
+	public void deleteRating(@Param(name="Rating Id")long id){
+//		 Users user = azureAPI.currentUser.get();
+//		if(user.ge  != id) {
+//			System.out.println("You can not delete another person rating");
+//		}else {
+		azureAPI.deleteRating(id);
+		//}
+	}
+	
+	
 }

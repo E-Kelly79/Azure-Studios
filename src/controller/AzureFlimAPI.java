@@ -1,17 +1,21 @@
 package controller;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 /*
  * Author Eoin Kelly 
  * Date 03/11/17
  */
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.google.common.base.Optional;
 
@@ -26,8 +30,10 @@ public class AzureFlimAPI implements azureInterface {
 	private Map<Long, Users> usersIndex = new HashMap<>();
 	private Map<String, Users> usersName = new HashMap<>();
 	private Map<Long, Movies> movieIndex = new HashMap<>();
+	private Map<Long, Ratings> ratingsIndex = new HashMap<>();
 	private Map<String, Movies> movieTitle = new HashMap<>();
 	public  Optional<Users> currentUser;
+	
 
 	public AzureFlimAPI() {
 
@@ -37,8 +43,9 @@ public class AzureFlimAPI implements azureInterface {
 		this.serializer = serializer;
 	}
 	
-	public boolean login(String firstName, String lastName) {
-		Optional<Users> user = Optional.fromNullable(usersName.get(firstName));
+	//Login a user 
+	public boolean login(Long userId, String lastName) {
+		Optional<Users> user = Optional.fromNullable(usersIndex.get(userId));
 		if(user.isPresent() && user.get().lastName.equals(lastName)) {
 			currentUser = user;
 			return true;
@@ -48,6 +55,7 @@ public class AzureFlimAPI implements azureInterface {
 		
 	}
 	
+	//Logout a user
 	public void logout() {
 		Optional<Users> user = currentUser;
 		if(user.isPresent()) {
@@ -61,21 +69,21 @@ public class AzureFlimAPI implements azureInterface {
 	// will create new users and movies
 	public void initalLoad() throws IOException {
 		String delims = "[|]";
-		Scanner scanner = new Scanner(new File("./lib/users5.dat"));
+		Scanner scanner = new Scanner(new File("./files/users5.dat"));
 		while (scanner.hasNextLine()) {
 			String userDetails = scanner.nextLine();
 			// parse user details string
 			String[] userTokens = userDetails.split(delims);
 
 			if (userTokens.length == 7) {
-				createUser(userTokens[1], userTokens[2], userTokens[3], userTokens[4], userTokens[5]);
+				createUser(userTokens[1], userTokens[2], Integer.valueOf(userTokens[3]), userTokens[4], userTokens[5]);
 			} else {
 				scanner.close();
 				throw new IOException("Invalid member length: " + userTokens.length);
 			}
 		}
 
-		scanner = new Scanner(new File("./lib/items5.dat"));
+		scanner = new Scanner(new File("./files/items5.dat"));
 		while (scanner.hasNextLine()) {
 			String movieDetails = scanner.nextLine();
 			// parse user details string
@@ -88,6 +96,20 @@ public class AzureFlimAPI implements azureInterface {
 				throw new IOException("Invalid member length: " + movieTokens.length);
 			}
 		}
+		
+		scanner = new Scanner (new File("./files/ratings5.dat"));
+        while (scanner.hasNextLine()) {
+          String  userDetails2 = scanner.nextLine();
+            // parse user details string
+           String[]  userTokens2 = userDetails2.split(delims);
+            if (userTokens2.length == 4) {
+                addRatings(Long.valueOf(userTokens2[0]),Long.valueOf(userTokens2[1]), Integer.valueOf(userTokens2[2]));
+            } else {
+               
+                throw new IOException("Invalid member length: " + userTokens2.length);
+            }
+
+    }
 		scanner.close();
 
 	}
@@ -98,46 +120,42 @@ public class AzureFlimAPI implements azureInterface {
 		serializer.read();
 		usersIndex = (Map<Long, Users>) serializer.pop();
 		movieIndex = (Map<Long, Movies>) serializer.pop();
-		usersName = (Map<String, Users>) serializer.pop();
+		ratingsIndex = (Map<Long, Ratings>) serializer.pop();
+		//usersName = (Map<String, Users>) serializer.pop();
 	}
 
 	@Override
 	public void store() throws Exception {
-		serializer.push(usersIndex);
-		serializer.push(usersName);
+		serializer.push(ratingsIndex);
 		serializer.push(movieIndex);
+		serializer.push(usersIndex);
+		//serializer.push(usersName);
 		serializer.write();
 	}
+	
+	/*=====================
+	 * User Methods
+	 =====================*/
 
 	// Return all users in file
 	public Collection<Users> getUsers() {
-		List<Entry<Long, Users>> user = new LinkedList<Entry<Long, Users>>(usersIndex.entrySet());
 		return usersIndex.values();
 	}
 
 	// delete all users
 	public void deleteUsers() {
 		Users user = new Users();
-		if(user.role== "admin") {
 			usersIndex.clear();
 			usersName.clear();
-		}else {
-			
-		}
 	}
 
 	
 	// create a new users using @Param firstname, lastname, age, gender, occupation  *hello*
 	@Override
-	public Users createUser(String firstName, String lastName, String age, String gender, String occupation) {
+	public Users createUser(String firstName, String lastName, int age, String gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
-		if(user.role== "admin") {
 			usersIndex.put(user.id, user);
-			usersName.put(firstName, user);
 			return user;
-		}else {
-			return null;
-		}
 	}
 
 	// Returns user information when searching for there first name
@@ -146,7 +164,7 @@ public class AzureFlimAPI implements azureInterface {
 		return usersName.get(name);
 	}
 
-	// Retturns user by id
+	// Returns user by id
 	@Override
 	public Users getUserById(Long id) {
 		return usersIndex.get(id);
@@ -158,26 +176,15 @@ public class AzureFlimAPI implements azureInterface {
 		Users user = usersIndex.remove(id);
 		usersName.remove(user.firstName);
 	}
-
-	// create movies using @Prama id title year, url
-	// Movies
-	@Override
-	public Movies createMovie(Long id, String title, String year, String url) {
-		Movies movie = null;
-		Optional<Users> user = Optional.fromNullable(usersIndex.get(id));
-		if (user.isPresent()) {
-			movie = new Movies(title, year, url);
-			user.get().movieObject.put(movie.id, movie);
-			movieIndex.put(movie.id, movie);
-		}
-		return movie;
-	}
+	
+	/*==========================
+	  Movie Methods
+	 =========================*/
 
 	// create a movie without an id
 	public void addMovies(String title, String year, String url) {
 		Movies movie = new Movies(title, year, url);
 		movieIndex.put(movie.id, movie);
-		movieTitle.put(title, movie);
 	}
 
 	// gets a list of all movies in file
@@ -190,19 +197,59 @@ public class AzureFlimAPI implements azureInterface {
 	public Movies getMovie(Long id) {
 		return movieIndex.get(id);
 	}
+	
+	public void deleteMovie(Long id) {
+		movieIndex.remove(id);
+	}
 
 	// Get a movie by its title details
 	@Override
 	public Movies getMovieByTitle(String title) {
 		return movieTitle.get(title);
 	}
-
+	
+	
+	/*========================
+	 * Rating Methods
+	 ========================*/
+	
+	public Collection<Ratings> getRatings(){
+		return ratingsIndex.values();
+	}
+	
+	public Ratings getRating(long id){
+    	return ratingsIndex.get(id);
+    }
+	
+	public Map<Long, Ratings> getUserRating(long id) {
+		Optional<Users> user = Optional.fromNullable(usersIndex.get(id));
+		return user.get().userRatings;
+	}
+	
+	public Map<Long, Ratings> getMovieRating(long id) {
+		Optional<Movies> movie = Optional.fromNullable(movieIndex.get(id));
+		return movie.get().theMoviesRatings;
+		
+}
+	
+	
+	public void deleteRating(long id){
+	    ratingsIndex.remove(id);
+	}
+	
 	// add a rating to a movie
 	@Override
-	public void addRatings(Long id, Long userID, Long movieID, int rating) {
-		Optional<Movies> movie = Optional.fromNullable(movieIndex.get(id));
-		if (movie.isPresent()) {
-			movie.get().theMovies.add(new Ratings(userID, movieID, rating));
+	public void addRatings(Long userID, Long movieID, int rating) {
+		Ratings ratings;
+		
+		Optional<Users> user = Optional.fromNullable(usersIndex.get(userID));
+		Optional<Movies> movie = Optional.fromNullable(movieIndex.get(movieID));
+		if (movie.isPresent() && user.isPresent()) {
+			ratings = new Ratings(userID, movieID, rating); // add new rating
+			user.get().userRatings.put(ratings.id, ratings); // attach user to a rating
+			movie.get().theMoviesRatings.put(ratings.id, ratings); // attach a movie to a rating
+			ratingsIndex.put(ratings.id, ratings); //add rating to a collection
+			
 		}
 	}
 

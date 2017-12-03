@@ -12,27 +12,27 @@ import com.google.common.base.Optional;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 
-public class Users implements Comparator<String>{
+public class Users implements Comparable<Users> {
 	static Long counter = 01L;
 	public Long id;
 	public String firstName;
 	public String lastName;
-	public String age;
+	public int age;
 	public String gender;
 	public String occupation;
 	public String role;
 
-	public Map<Long, Movies> movieObject = new HashMap<>();
+	public Map<Long, Ratings> userRatings = new HashMap<>();
 	
 	public Users() {
 		
 	}
 
-	public Users(String firstName, String lastName, String age, String gender, String occupation) {
+	public Users(String firstName, String lastName, int age, String gender, String occupation) {
 		this(firstName, lastName, age, gender, occupation, "default");
 	}
 
-	public Users(String firstName, String lastName, String age, String gender, String occupation, String role) {
+	public Users(String firstName, String lastName, int age, String gender, String occupation, String role) {
 		this.id = counter++;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,7 +44,11 @@ public class Users implements Comparator<String>{
 
 	@Override
 	public String toString() {
-		return toStringHelper(this).addValue(id).addValue(firstName).addValue(lastName).addValue(age).addValue(gender)
+		return toStringHelper(this).addValue(id)
+				.addValue(firstName)
+				.addValue(lastName)
+				.addValue(age)
+				.addValue(gender)
 				.addValue(occupation +"\n").toString() ;
 	}
 
@@ -69,8 +73,9 @@ public class Users implements Comparator<String>{
 	}
 
 	@Override
-	public int compare(String s1, String s2) {
-		return s1.compareToIgnoreCase(s2);
+	//return
+	public int compareTo(Users user) {
+		return this.firstName.compareTo(user.firstName);
 	}
 
 }
