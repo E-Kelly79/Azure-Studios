@@ -6,8 +6,8 @@ package model;
  */
 public class Fixtures {
 	public static Users[] users = { 
-			new Users("Eoin", "Kelly", "38", "M", "Student", "admin"),
-			new Users("Emma", "Martin", "32", "M", "Student", "default") 
+			new Users("Eoin", "Kelly", 38, "M", "Student", "admin"),
+			new Users("Emma", "Martin", 32, "M", "Student", "default") 
 	};
 
 	public static Movies[] movies = { 

@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 import com.google.common.base.Optional;
@@ -51,6 +54,23 @@ public class DefaultMenu {
 	public void getUser(@Param(name = "name") Long id) {
 		Users user = azureAPI.getUserById(id);
 	    System.out.println(user);
+	}
+	
+	@Command(description = "Create a new User")
+	public void createUser(@Param(name = "first name") String firstName, @Param(name = "last name") String lastName,
+	@Param(name = "age") int age, @Param(name = "gender") String gender, @Param(name = "occupation") String occupation) {
+		azureAPI.createUser(firstName, lastName, age, gender, occupation);
+	}
+	
+	@Command(description = "search a user by name")
+	public void getUserByName(String name) {
+		ArrayList<Users> users = new ArrayList<Users>();
+		users.addAll(azureAPI.getUsers());
+		for(int i = 0; i < users.size(); i++) {
+			if(users.get(i).firstName.toLowerCase().contains(name.toLowerCase())) {
+				System.out.println(users.get(i));
+			}
+		}
 	}
 	
 	

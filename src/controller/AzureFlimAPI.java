@@ -27,9 +27,9 @@ import utils.Serializer;
 public class AzureFlimAPI implements azureInterface {
 
 	private Serializer serializer;
-	private Map<Long, Users> usersIndex = new HashMap<>();
+	public Map<Long, Users> usersIndex = new HashMap<>();
 	private Map<String, Users> usersName = new HashMap<>();
-	private Map<Long, Movies> movieIndex = new HashMap<>();
+	public Map<Long, Movies> movieIndex = new HashMap<>();
 	private Map<Long, Ratings> ratingsIndex = new HashMap<>();
 	private Map<String, Movies> movieTitle = new HashMap<>();
 	public  Optional<Users> currentUser;
@@ -154,8 +154,8 @@ public class AzureFlimAPI implements azureInterface {
 	@Override
 	public Users createUser(String firstName, String lastName, int age, String gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
-			usersIndex.put(user.id, user);
-			return user;
+		usersIndex.put(user.id, user);
+		return user;
 	}
 
 	// Returns user information when searching for there first name
@@ -176,6 +176,8 @@ public class AzureFlimAPI implements azureInterface {
 		Users user = usersIndex.remove(id);
 		usersName.remove(user.firstName);
 	}
+	
+	
 	
 	/*==========================
 	  Movie Methods
@@ -213,6 +215,20 @@ public class AzureFlimAPI implements azureInterface {
 	 * Rating Methods
 	 ========================*/
 	
+		@Override
+		public void addRatings(Long userID, Long movieID, int rating) {
+			Ratings ratings;
+			Optional<Users> user = Optional.fromNullable(usersIndex.get(userID));
+			Optional<Movies> movie = Optional.fromNullable(movieIndex.get(movieID));
+			if (movie.isPresent() && user.isPresent()) {
+				ratings = new Ratings(userID, movieID, rating); // add new rating
+				user.get().userRatings.put(ratings.id, ratings); // attach user to a rating
+				movie.get().theMoviesRatings.put(ratings.id, ratings); // attach a movie to a rating
+				ratingsIndex.put(ratings.id, ratings); //add rating to a collection
+				
+			}
+		}
+	
 	public Collection<Ratings> getRatings(){
 		return ratingsIndex.values();
 	}
@@ -235,22 +251,6 @@ public class AzureFlimAPI implements azureInterface {
 	
 	public void deleteRating(long id){
 	    ratingsIndex.remove(id);
-	}
-	
-	// add a rating to a movie
-	@Override
-	public void addRatings(Long userID, Long movieID, int rating) {
-		Ratings ratings;
-		
-		Optional<Users> user = Optional.fromNullable(usersIndex.get(userID));
-		Optional<Movies> movie = Optional.fromNullable(movieIndex.get(movieID));
-		if (movie.isPresent() && user.isPresent()) {
-			ratings = new Ratings(userID, movieID, rating); // add new rating
-			user.get().userRatings.put(ratings.id, ratings); // attach user to a rating
-			movie.get().theMoviesRatings.put(ratings.id, ratings); // attach a movie to a rating
-			ratingsIndex.put(ratings.id, ratings); //add rating to a collection
-			
-		}
 	}
 
 }

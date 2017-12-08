@@ -5,12 +5,13 @@ package model;
  * Date: 03/11/17
  */
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import com.google.common.base.Objects;
 import static com.google.common.base.MoreObjects.toStringHelper;
 
-public class Movies implements Comparable<Movies>{
+public class Movies implements Comparable<Movies>, Comparator<Movies>{
 	
 	
 	static Long counter = 0l;
@@ -19,6 +20,7 @@ public class Movies implements Comparable<Movies>{
 	public String title;
 	public String year;
 	public String url;
+	public double ratingSystem = 0;
 	
 	public Map<Long, Ratings> theMoviesRatings = new HashMap<>();
 
@@ -65,6 +67,10 @@ public class Movies implements Comparable<Movies>{
 	
 	public int compareTo(Movies movie) {
 		return this.title.compareTo(movie.title);
+	}
+	
+	public int compare(Movies s1, Movies s2) {
+		return (int) (s1.ratingSystem - s2.ratingSystem);
 	}
 	
 	

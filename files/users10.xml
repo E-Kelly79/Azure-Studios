@@ -1,0 +1,919 @@
+<object-stream>
+  <java.util.Stack serialization="custom">
+    <unserializable-parents/>
+    <vector>
+      <default>
+        <capacityIncrement>0</capacityIncrement>
+        <elementCount>3</elementCount>
+        <elementData>
+          <map>
+            <entry>
+              <long>0</long>
+              <model.Ratings>
+                <id>0</id>
+                <userId>1</userId>
+                <movieId>1</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>1</long>
+              <model.Ratings>
+                <id>1</id>
+                <userId>1</userId>
+                <movieId>1</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>2</long>
+              <model.Ratings>
+                <id>2</id>
+                <userId>2</userId>
+                <movieId>1</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>3</long>
+              <model.Ratings>
+                <id>3</id>
+                <userId>2</userId>
+                <movieId>1</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>4</long>
+              <model.Ratings>
+                <id>4</id>
+                <userId>3</userId>
+                <movieId>1</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>5</long>
+              <model.Ratings>
+                <id>5</id>
+                <userId>4</userId>
+                <movieId>1</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>6</long>
+              <model.Ratings>
+                <id>6</id>
+                <userId>5</userId>
+                <movieId>1</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>7</long>
+              <model.Ratings>
+                <id>7</id>
+                <userId>1</userId>
+                <movieId>2</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>8</long>
+              <model.Ratings>
+                <id>8</id>
+                <userId>2</userId>
+                <movieId>2</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>9</long>
+              <model.Ratings>
+                <id>9</id>
+                <userId>2</userId>
+                <movieId>2</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>10</long>
+              <model.Ratings>
+                <id>10</id>
+                <userId>3</userId>
+                <movieId>2</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>11</long>
+              <model.Ratings>
+                <id>11</id>
+                <userId>5</userId>
+                <movieId>2</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>12</long>
+              <model.Ratings>
+                <id>12</id>
+                <userId>1</userId>
+                <movieId>3</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>13</long>
+              <model.Ratings>
+                <id>13</id>
+                <userId>2</userId>
+                <movieId>3</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>14</long>
+              <model.Ratings>
+                <id>14</id>
+                <userId>3</userId>
+                <movieId>3</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>15</long>
+              <model.Ratings>
+                <id>15</id>
+                <userId>3</userId>
+                <movieId>3</movieId>
+                <rating>-3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>16</long>
+              <model.Ratings>
+                <id>16</id>
+                <userId>4</userId>
+                <movieId>3</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>17</long>
+              <model.Ratings>
+                <id>17</id>
+                <userId>5</userId>
+                <movieId>3</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>18</long>
+              <model.Ratings>
+                <id>18</id>
+                <userId>2</userId>
+                <movieId>4</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>19</long>
+              <model.Ratings>
+                <id>19</id>
+                <userId>3</userId>
+                <movieId>4</movieId>
+                <rating>-3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>20</long>
+              <model.Ratings>
+                <id>20</id>
+                <userId>3</userId>
+                <movieId>4</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>21</long>
+              <model.Ratings>
+                <id>21</id>
+                <userId>4</userId>
+                <movieId>4</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>22</long>
+              <model.Ratings>
+                <id>22</id>
+                <userId>4</userId>
+                <movieId>4</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>23</long>
+              <model.Ratings>
+                <id>23</id>
+                <userId>4</userId>
+                <movieId>4</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>24</long>
+              <model.Ratings>
+                <id>24</id>
+                <userId>5</userId>
+                <movieId>4</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>25</long>
+              <model.Ratings>
+                <id>25</id>
+                <userId>5</userId>
+                <movieId>4</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>26</long>
+              <model.Ratings>
+                <id>26</id>
+                <userId>1</userId>
+                <movieId>5</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>27</long>
+              <model.Ratings>
+                <id>27</id>
+                <userId>1</userId>
+                <movieId>5</movieId>
+                <rating>-3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>28</long>
+              <model.Ratings>
+                <id>28</id>
+                <userId>3</userId>
+                <movieId>5</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>29</long>
+              <model.Ratings>
+                <id>29</id>
+                <userId>3</userId>
+                <movieId>5</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>30</long>
+              <model.Ratings>
+                <id>30</id>
+                <userId>5</userId>
+                <movieId>5</movieId>
+                <rating>-3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>31</long>
+              <model.Ratings>
+                <id>31</id>
+                <userId>4</userId>
+                <movieId>6</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>32</long>
+              <model.Ratings>
+                <id>32</id>
+                <userId>1</userId>
+                <movieId>7</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>33</long>
+              <model.Ratings>
+                <id>33</id>
+                <userId>2</userId>
+                <movieId>7</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>34</long>
+              <model.Ratings>
+                <id>34</id>
+                <userId>3</userId>
+                <movieId>7</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>35</long>
+              <model.Ratings>
+                <id>35</id>
+                <userId>4</userId>
+                <movieId>7</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>36</long>
+              <model.Ratings>
+                <id>36</id>
+                <userId>5</userId>
+                <movieId>7</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>37</long>
+              <model.Ratings>
+                <id>37</id>
+                <userId>3</userId>
+                <movieId>8</movieId>
+                <rating>5</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>38</long>
+              <model.Ratings>
+                <id>38</id>
+                <userId>4</userId>
+                <movieId>8</movieId>
+                <rating>3</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>39</long>
+              <model.Ratings>
+                <id>39</id>
+                <userId>5</userId>
+                <movieId>8</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>40</long>
+              <model.Ratings>
+                <id>40</id>
+                <userId>1</userId>
+                <movieId>9</movieId>
+                <rating>1</rating>
+              </model.Ratings>
+            </entry>
+            <entry>
+              <long>41</long>
+              <model.Ratings>
+                <id>41</id>
+                <userId>5</userId>
+                <movieId>9</movieId>
+                <rating>-5</rating>
+              </model.Ratings>
+            </entry>
+          </map>
+          <map>
+            <entry>
+              <long>0</long>
+              <model.Movies>
+                <id>0</id>
+                <title>Toy Story (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Toy%20Story%20(1995)</url>
+                <theMoviesRatings/>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>1</long>
+              <model.Movies>
+                <id>1</id>
+                <title>GoldenEye (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?GoldenEye%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>0</long>
+                    <model.Ratings reference="../../../../../../map/entry/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>1</long>
+                    <model.Ratings reference="../../../../../../map/entry[2]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>2</long>
+                    <model.Ratings reference="../../../../../../map/entry[3]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>3</long>
+                    <model.Ratings reference="../../../../../../map/entry[4]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>4</long>
+                    <model.Ratings reference="../../../../../../map/entry[5]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>5</long>
+                    <model.Ratings reference="../../../../../../map/entry[6]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>6</long>
+                    <model.Ratings reference="../../../../../../map/entry[7]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>2</long>
+              <model.Movies>
+                <id>2</id>
+                <title>Four Rooms (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Four%20Rooms%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>7</long>
+                    <model.Ratings reference="../../../../../../map/entry[8]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>8</long>
+                    <model.Ratings reference="../../../../../../map/entry[9]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>9</long>
+                    <model.Ratings reference="../../../../../../map/entry[10]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>10</long>
+                    <model.Ratings reference="../../../../../../map/entry[11]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>11</long>
+                    <model.Ratings reference="../../../../../../map/entry[12]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>3</long>
+              <model.Movies>
+                <id>3</id>
+                <title>Get Shorty (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Get%20Shorty%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>16</long>
+                    <model.Ratings reference="../../../../../../map/entry[17]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>17</long>
+                    <model.Ratings reference="../../../../../../map/entry[18]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>12</long>
+                    <model.Ratings reference="../../../../../../map/entry[13]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>13</long>
+                    <model.Ratings reference="../../../../../../map/entry[14]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>14</long>
+                    <model.Ratings reference="../../../../../../map/entry[15]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>15</long>
+                    <model.Ratings reference="../../../../../../map/entry[16]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>4</long>
+              <model.Movies>
+                <id>4</id>
+                <title>Copycat (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Copycat%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>18</long>
+                    <model.Ratings reference="../../../../../../map/entry[19]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>19</long>
+                    <model.Ratings reference="../../../../../../map/entry[20]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>20</long>
+                    <model.Ratings reference="../../../../../../map/entry[21]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>21</long>
+                    <model.Ratings reference="../../../../../../map/entry[22]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>22</long>
+                    <model.Ratings reference="../../../../../../map/entry[23]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>23</long>
+                    <model.Ratings reference="../../../../../../map/entry[24]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>24</long>
+                    <model.Ratings reference="../../../../../../map/entry[25]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>25</long>
+                    <model.Ratings reference="../../../../../../map/entry[26]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>5</long>
+              <model.Movies>
+                <id>5</id>
+                <title>Shanghai Triad (Yao a yao yao dao waipo qiao) (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/Title?Yao+a+yao+yao+dao+waipo+qiao+(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>26</long>
+                    <model.Ratings reference="../../../../../../map/entry[27]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>27</long>
+                    <model.Ratings reference="../../../../../../map/entry[28]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>28</long>
+                    <model.Ratings reference="../../../../../../map/entry[29]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>29</long>
+                    <model.Ratings reference="../../../../../../map/entry[30]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>30</long>
+                    <model.Ratings reference="../../../../../../map/entry[31]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>6</long>
+              <model.Movies>
+                <id>6</id>
+                <title>Twelve Monkeys (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Twelve%20Monkeys%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>31</long>
+                    <model.Ratings reference="../../../../../../map/entry[32]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>7</long>
+              <model.Movies>
+                <id>7</id>
+                <title>Babe (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Babe%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>32</long>
+                    <model.Ratings reference="../../../../../../map/entry[33]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>33</long>
+                    <model.Ratings reference="../../../../../../map/entry[34]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>34</long>
+                    <model.Ratings reference="../../../../../../map/entry[35]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>35</long>
+                    <model.Ratings reference="../../../../../../map/entry[36]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>36</long>
+                    <model.Ratings reference="../../../../../../map/entry[37]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>8</long>
+              <model.Movies>
+                <id>8</id>
+                <title>Dead Man Walking (1995)</title>
+                <year>01-Jan-1995</year>
+                <url>http://us.imdb.com/M/title-exact?Dead%20Man%20Walking%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>37</long>
+                    <model.Ratings reference="../../../../../../map/entry[38]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>38</long>
+                    <model.Ratings reference="../../../../../../map/entry[39]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>39</long>
+                    <model.Ratings reference="../../../../../../map/entry[40]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+            <entry>
+              <long>9</long>
+              <model.Movies>
+                <id>9</id>
+                <title>Richard III (1995)</title>
+                <year>22-Jan-1996</year>
+                <url>http://us.imdb.com/M/title-exact?Richard%20III%20(1995)</url>
+                <theMoviesRatings>
+                  <entry>
+                    <long>40</long>
+                    <model.Ratings reference="../../../../../../map/entry[41]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>41</long>
+                    <model.Ratings reference="../../../../../../map/entry[42]/model.Ratings"/>
+                  </entry>
+                </theMoviesRatings>
+              </model.Movies>
+            </entry>
+          </map>
+          <map>
+            <entry>
+              <long>1</long>
+              <model.Users>
+                <id>1</id>
+                <firstName>Leonard</firstName>
+                <lastName>Hernandez</lastName>
+                <age>24</age>
+                <gender>M</gender>
+                <occupation>technician</occupation>
+                <role>default</role>
+                <userRatings>
+                  <entry>
+                    <long>0</long>
+                    <model.Ratings reference="../../../../../../map/entry/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>32</long>
+                    <model.Ratings reference="../../../../../../map/entry[33]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>1</long>
+                    <model.Ratings reference="../../../../../../map/entry[2]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>7</long>
+                    <model.Ratings reference="../../../../../../map/entry[8]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>40</long>
+                    <model.Ratings reference="../../../../../../map/entry[41]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>26</long>
+                    <model.Ratings reference="../../../../../../map/entry[27]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>27</long>
+                    <model.Ratings reference="../../../../../../map/entry[28]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>12</long>
+                    <model.Ratings reference="../../../../../../map/entry[13]/model.Ratings"/>
+                  </entry>
+                </userRatings>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>2</long>
+              <model.Users>
+                <id>2</id>
+                <firstName>Melody</firstName>
+                <lastName>Roberson</lastName>
+                <age>53</age>
+                <gender>F</gender>
+                <occupation>other</occupation>
+                <role>default</role>
+                <userRatings>
+                  <entry>
+                    <long>33</long>
+                    <model.Ratings reference="../../../../../../map/entry[34]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>2</long>
+                    <model.Ratings reference="../../../../../../map/entry[3]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>18</long>
+                    <model.Ratings reference="../../../../../../map/entry[19]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>3</long>
+                    <model.Ratings reference="../../../../../../map/entry[4]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>8</long>
+                    <model.Ratings reference="../../../../../../map/entry[9]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>9</long>
+                    <model.Ratings reference="../../../../../../map/entry[10]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>13</long>
+                    <model.Ratings reference="../../../../../../map/entry[14]/model.Ratings"/>
+                  </entry>
+                </userRatings>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>3</long>
+              <model.Users>
+                <id>3</id>
+                <firstName>Gregory</firstName>
+                <lastName>Newton</lastName>
+                <age>23</age>
+                <gender>M</gender>
+                <occupation>writer</occupation>
+                <role>default</role>
+                <userRatings>
+                  <entry>
+                    <long>34</long>
+                    <model.Ratings reference="../../../../../../map/entry[35]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>19</long>
+                    <model.Ratings reference="../../../../../../map/entry[20]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>4</long>
+                    <model.Ratings reference="../../../../../../map/entry[5]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>20</long>
+                    <model.Ratings reference="../../../../../../map/entry[21]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>37</long>
+                    <model.Ratings reference="../../../../../../map/entry[38]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>10</long>
+                    <model.Ratings reference="../../../../../../map/entry[11]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>28</long>
+                    <model.Ratings reference="../../../../../../map/entry[29]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>29</long>
+                    <model.Ratings reference="../../../../../../map/entry[30]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>14</long>
+                    <model.Ratings reference="../../../../../../map/entry[15]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>15</long>
+                    <model.Ratings reference="../../../../../../map/entry[16]/model.Ratings"/>
+                  </entry>
+                </userRatings>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>4</long>
+              <model.Users>
+                <id>4</id>
+                <firstName>Oliver</firstName>
+                <lastName>George</lastName>
+                <age>24</age>
+                <gender>M</gender>
+                <occupation>technician</occupation>
+                <role>default</role>
+                <userRatings>
+                  <entry>
+                    <long>16</long>
+                    <model.Ratings reference="../../../../../../map/entry[17]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>35</long>
+                    <model.Ratings reference="../../../../../../map/entry[36]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>5</long>
+                    <model.Ratings reference="../../../../../../map/entry[6]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>21</long>
+                    <model.Ratings reference="../../../../../../map/entry[22]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>22</long>
+                    <model.Ratings reference="../../../../../../map/entry[23]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>38</long>
+                    <model.Ratings reference="../../../../../../map/entry[39]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>23</long>
+                    <model.Ratings reference="../../../../../../map/entry[24]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>31</long>
+                    <model.Ratings reference="../../../../../../map/entry[32]/model.Ratings"/>
+                  </entry>
+                </userRatings>
+              </model.Users>
+            </entry>
+            <entry>
+              <long>5</long>
+              <model.Users>
+                <id>5</id>
+                <firstName>Jenna</firstName>
+                <lastName>Parker</lastName>
+                <age>33</age>
+                <gender>F</gender>
+                <occupation>other</occupation>
+                <role>admin</role>
+                <userRatings>
+                  <entry>
+                    <long>17</long>
+                    <model.Ratings reference="../../../../../../map/entry[18]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>36</long>
+                    <model.Ratings reference="../../../../../../map/entry[37]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>6</long>
+                    <model.Ratings reference="../../../../../../map/entry[7]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>39</long>
+                    <model.Ratings reference="../../../../../../map/entry[40]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>24</long>
+                    <model.Ratings reference="../../../../../../map/entry[25]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>25</long>
+                    <model.Ratings reference="../../../../../../map/entry[26]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>41</long>
+                    <model.Ratings reference="../../../../../../map/entry[42]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>11</long>
+                    <model.Ratings reference="../../../../../../map/entry[12]/model.Ratings"/>
+                  </entry>
+                  <entry>
+                    <long>30</long>
+                    <model.Ratings reference="../../../../../../map/entry[31]/model.Ratings"/>
+                  </entry>
+                </userRatings>
+              </model.Users>
+            </entry>
+          </map>
+          <null/>
+          <null/>
+          <null/>
+          <null/>
+          <null/>
+          <null/>
+          <null/>
+        </elementData>
+      </default>
+    </vector>
+  </java.util.Stack>
+</object-stream>

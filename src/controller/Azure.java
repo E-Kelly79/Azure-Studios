@@ -37,7 +37,7 @@ public class Azure implements ShellDependent {
 
 	// Make a constructor of the azure clas to load the file for read and writing
 	public Azure() throws Exception {
-		File movies = new File("./files/users9.xml");
+		File movies = new File("./files/users10.xml");
 		Serializer serializer = new XMLSerializer(movies);
 		azure = new AzureFlimAPI(serializer);
 		if (movies.isFile()) {
@@ -53,7 +53,7 @@ public class Azure implements ShellDependent {
 	public void logIn(@Param(name = "id") Long userID, @Param(name = "lastName") String lastName) throws IOException {
 		if (azure.login(userID, lastName) && azure.currentUser.isPresent()) {
 			Users user = azure.currentUser.get();
-			System.out.println("You are logged in as " + user.firstName + user.lastName);
+			System.out.println("You are logged in as " + user.firstName + " " +user.lastName);
 			if (user.role != null && user.role.equals(ADMIN)) {
 				AdminMenu adminMenu = new AdminMenu(azure, user.firstName);
 				ShellFactory.createSubshell(user.firstName, shell, "admin", adminMenu).commandLoop();
@@ -133,56 +133,6 @@ public class Azure implements ShellDependent {
 
 	public static void main(String[] args) throws Exception {
 		Azure main = new Azure();
-		main.azure.initalLoad();
-		
-//		HashMap<String, String> codenames = new HashMap<String, String>(); 
-//		codenames.put("JDK 1.1.4", "Sparkler"); 
-//		codenames.put("J2SE 1.2", "Playground"); 
-//		codenames.put("J2SE 1.3", "Kestrel"); 
-//		codenames.put("J2SE 1.4", "Merlin"); 
-//		codenames.put("J2SE 5.0", "Tiger"); 
-//		codenames.put("Java SE 6", "Mustang"); 
-//		codenames.put("Java SE 7", "Dolphin"); 
-//		System.out.println("HashMap before sorting, random order "); 
-//		Set<Entry<String, String>> entries = codenames.entrySet();
-//		for(Entry<String, String> entry : entries){ 
-//			System.out.println(entry.getKey() + " ==> " + entry.getValue()); 
-//			} 
-//		
-//		TreeMap<String, String> sorted = new TreeMap<>(codenames); 
-//		Set<Entry<String, String>> mappings = sorted.entrySet(); 
-//		System.out.println("HashMap after sorting by keys in ascending order "); 
-//		for(Entry<String, String> mapping : mappings){ 
-//			System.out.println(mapping.getKey() + " ==> " + mapping.getValue()); 
-//			} 
-//		
-//		
-//		Comparator<Entry<Long, Users>> valueComparator = new Comparator<Entry<String,String>>() {
-//			@Override 
-//			public int compare(Entry<String, String> e1, Entry<String, String> e2) {
-//				String v1 = e1.getValue(); String v2 = e2.getValue(); return v1.compareTo(v2);
-//			} 
-//		};
-//			
-//			
-//			List<Entry<String, String>> listOfEntries = new ArrayList<Entry<String, String>>(entries); 
-//			
-//			
-//			Collections.sort(listOfEntries, valueComparator); 
-//			LinkedHashMap<String, String> sortedByValue = new LinkedHashMap<String, String>(listOfEntries.size());
-//			
-//			
-//			for(Entry<String, String> entry : listOfEntries){ 
-//				sortedByValue.put(entry.getKey(), entry.getValue()); 
-//			} 
-			
-//			System.out.println("HashMap after sorting entries by values ");
-//			Set<Entry<String, String>> entrySetSortedByValue = sortedByValue.entrySet(); 
-//			for(Entry<String, String> mapping : entrySetSortedByValue){ 
-//				System.out.println(mapping.getKey() + " ==> " + mapping.getValue()); 
-//			} 
-		
-
 		Shell shell = ShellFactory.createConsoleShell("lm", "Welcome to Azure Stuidos - please type ?list for a menu", main);
 		shell.commandLoop();
 		main.azure.store();

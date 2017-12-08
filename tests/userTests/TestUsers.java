@@ -13,7 +13,7 @@ import static model.Fixtures.users;
 
 public class TestUsers {
 
-	Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
+	Users eoin = new Users("Eoin", "Kelly", 38, "M", "Student");
 	
 	
 	
@@ -21,15 +21,15 @@ public class TestUsers {
 	public void testCreate() {
 		assertEquals("Eoin", eoin.firstName);
 		assertEquals("Kelly", eoin.lastName);
-		assertEquals("38", eoin.age);
+		assertEquals(38, eoin.age);
 		assertEquals("M", eoin.gender);
 		assertEquals("Student", eoin.occupation);
 	}
 	
 	@Test
 	public void testEquals() {
-		Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
-		Users emma = new Users("Emma", "Martin", "31", "F", "Student");
+		Users eoin = new Users("Eoin", "Kelly", 38, "M", "Student");
+		Users emma = new Users("Emma", "Martin", 31, "F", "Student");
 		assertEquals(eoin, eoin);
 		assertEquals(emma, emma);
 		assertNotEquals(eoin, emma);

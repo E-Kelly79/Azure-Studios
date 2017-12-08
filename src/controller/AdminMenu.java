@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -12,6 +15,7 @@ import asg.cliche.Param;
 import model.Movies;
 import model.Ratings;
 import model.Users;
+import utils.ComparatorByID;
 
 public class AdminMenu {
 	private String name;
@@ -87,6 +91,29 @@ public class AdminMenu {
 			Users u = iter.next();
 			System.out.println(u.firstName + " " + u.lastName);
 		}
+	}
+	
+	@Command(description = "search a user by name")
+	public void getUserByName(String name) {
+		ArrayList<Users> users = new ArrayList<Users>();
+		users.addAll(azureAPI.getUsers());
+		for(int i = 0; i < users.size(); i++) {
+			if(users.get(i).firstName.toLowerCase().contains(name.toLowerCase())) {
+				System.out.println(users.get(i));
+			}
+		}
+	}
+	
+	@Command(description = "Get top 10 movies", abbrev="t10")
+	public void Top10Movies()
+	{
+		List<Movies> list = new ArrayList<Movies>(azureAPI.movieIndex.values());
+		Collections.sort(list, new ComparatorByID().reversed());
+		Iterator<Movies> iter = list.iterator();
+		while (iter.hasNext()) {
+			Movies s = iter.next();
+			System.out.println(s.title + "  " + (s.ratingSystem / s.theMoviesRatings.size()));
+	}
 	}
 	
 	@Command(description = "Get a Users detail", abbrev="gubid")
