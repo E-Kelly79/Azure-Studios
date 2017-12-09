@@ -1,10 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeSet;
 
@@ -15,7 +12,7 @@ import asg.cliche.Param;
 import model.Movies;
 import model.Ratings;
 import model.Users;
-import utils.ComparatorByID;
+
 
 public class AdminMenu {
 	private String name;
@@ -26,7 +23,7 @@ public class AdminMenu {
 		this.name = name;
 	}
 	
-	//retuns name
+	//returns name
 	public String getName() {
 		return name;
 	}
@@ -82,7 +79,7 @@ public class AdminMenu {
 	 * Users
 	 ======================*/
 	
-	@Command(description = "Get all users sorted by there Name", abbrev="getUsers")
+	@Command(description = "Get all users sorted by there Name")
 	public void getAllUsers() {
 		TreeSet<Users> sortedUsers = new TreeSet<Users>();
 		sortedUsers.addAll(azureAPI.getUsers());
@@ -105,15 +102,8 @@ public class AdminMenu {
 	}
 	
 	@Command(description = "Get top 10 movies", abbrev="t10")
-	public void Top10Movies()
-	{
-		List<Movies> list = new ArrayList<Movies>(azureAPI.movieIndex.values());
-		Collections.sort(list, new ComparatorByID().reversed());
-		Iterator<Movies> iter = list.iterator();
-		while (iter.hasNext()) {
-			Movies s = iter.next();
-			System.out.println(s.title + "  " + (s.ratingSystem / s.theMoviesRatings.size()));
-	}
+	public void Top10Movies(){
+		azureAPI.calculateAvg();
 	}
 	
 	@Command(description = "Get a Users detail", abbrev="gubid")
@@ -147,6 +137,18 @@ public class AdminMenu {
 	@Command(description="Get a Movie by its ID")
 	public Movies getMovie(@Param(name="Movie Id") Long id){
 		return azureAPI.getMovie(id);
+	}
+	
+	@Command(description="Get movie by title")
+	public void getMovieByTitle(@Param(name="title")String title) {
+		ArrayList<Movies> movies = new ArrayList<Movies>();
+		movies.addAll(azureAPI.getMovies());
+		for(int i = 0; i < movies.size(); i++) {
+			if(movies.get(i).title.toLowerCase().contains(title.toLowerCase())) {
+				System.out.println(movies.get(i));
+			}
+		}
+		
 	}
 	
 	

@@ -20,6 +20,7 @@ import model.Users;
 public class AzureAPUITests {
 
 	private AzureFlimAPI azure;
+	private Users eoin;
 
 	@Before
 	public void setup() {
@@ -57,7 +58,7 @@ public class AzureAPUITests {
 	}
 
 	public void testUserEmpty() {
-		Users eoin = new Users("Eoin", "Kelly", 38, "M", "Student");
+		eoin = new Users("Eoin", "Kelly", 38, "M", "Student");
 		assertEquals(0, azure.getUsers().size());
 		azure.createUser("Eoin", "Kelly", 38, "M", "Student");
 		assertEquals(1, azure.getUsers().size());
@@ -66,7 +67,7 @@ public class AzureAPUITests {
 	@Test
 	public void testDeleteUsers() {
 		assertEquals(users.length, azure.getUsers().size());
-		Users eoin = azure.getUserByName("Eoin");
+		eoin = azure.getUserByName("Eoin");
 		azure.deleteUser(eoin.id);
 		assertEquals(users.length - 1, azure.getUsers().size());
 	}

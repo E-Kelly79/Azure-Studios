@@ -7,25 +7,11 @@ package controller;
  */
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-
-import com.google.common.base.Optional;
-
 import asg.cliche.Command;
 import asg.cliche.Param;
 import asg.cliche.Shell;
 import asg.cliche.ShellDependent;
 import asg.cliche.ShellFactory;
-import model.Movies;
 import model.Users;
 import utils.Serializer;
 import utils.XMLSerializer;
@@ -34,6 +20,9 @@ public class Azure implements ShellDependent {
 	private static final String ADMIN = "admin";
 	private Shell shell;
 	public AzureFlimAPI azure = new AzureFlimAPI();
+	
+	
+	
 
 	// Make a constructor of the azure clas to load the file for read and writing
 	public Azure() throws Exception {
@@ -48,6 +37,7 @@ public class Azure implements ShellDependent {
 	public void cliSetShell(Shell shell) {
 		this.shell = shell;
 	}
+	
 
 	@Command(description = "Log in")
 	public void logIn(@Param(name = "id") Long userID, @Param(name = "lastName") String lastName) throws IOException {
@@ -133,8 +123,10 @@ public class Azure implements ShellDependent {
 
 	public static void main(String[] args) throws Exception {
 		Azure main = new Azure();
-		Shell shell = ShellFactory.createConsoleShell("lm", "Welcome to Azure Stuidos - please type ?list for a menu", main);
+		
+		Shell shell = ShellFactory.createConsoleShell("azure", "Welcome to Azure Stuidos - please type ?list for a menu", main);
 		shell.commandLoop();
+		
 		main.azure.store();
 
 	}

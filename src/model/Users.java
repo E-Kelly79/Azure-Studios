@@ -1,5 +1,5 @@
 package model;
-import java.util.Comparator;
+
 /*
  * Author: Eoin Kelly 
  * Student No: 20074820
@@ -8,8 +8,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import com.google.common.base.Objects;
-import com.google.common.base.Optional;
-
 import static com.google.common.base.MoreObjects.toStringHelper;
 
 public class Users implements Comparable<Users> {

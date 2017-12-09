@@ -27,7 +27,6 @@ public class XMLSerializer implements Serializer {
 		return stack.pop();
 	}
 
-	@SuppressWarnings("unchecked")
 	public void read() throws Exception {
 		ObjectInputStream inputFile = null;
 

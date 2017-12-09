@@ -1,13 +1,14 @@
 package controller;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
-import java.util.List;
+
 import java.util.Map;
-import java.util.Set;
+
 import java.util.TreeSet;
 
-import com.google.common.base.Optional;
+
 
 import asg.cliche.Command;
 import asg.cliche.Param;
@@ -23,6 +24,14 @@ public class DefaultMenu {
 	public DefaultMenu(AzureFlimAPI azureAPI, Users user) {
 		this.azureAPI = azureAPI;
 		this.setName(user.firstName);
+		this.user=user;
+	}
+	
+	public Users getUser() {
+		return user;
+	}
+
+	public void setUser(Users user) {
 		this.user = user;
 	}
 	
@@ -127,13 +136,17 @@ public class DefaultMenu {
 	
 	@Command(description="Delete a Rating")
 	public void deleteRating(@Param(name="Rating Id")long id){
-//		 Users user = azureAPI.currentUser.get();
-//		if(user.ge  != id) {
-//			System.out.println("You can not delete another person rating");
-//		}else {
-		azureAPI.deleteRating(id);
-		//}
+		Users user = azureAPI.currentUser.get();
+		if(user.id != id) {
+			System.out.println("You can not delete another person rating");
+		}else {
+			azureAPI.deleteRating(id);
+		}
 	}
+
+	
+	
+	
 	
 	
 }
