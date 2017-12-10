@@ -10,7 +10,7 @@ To use this project please go and clone it form the clone and zip option provide
 ## Examples
 ```
 to add a new user: au john doe 33 M job
-to add a new movie am title year url
+to add a new movie am title year url hsdflsdhgsdj;sodjs;dojspdgj
 ```
 
 
