@@ -12,10 +12,7 @@ public class Fixtures {
 
 	public static Movies[] movies = { 
 			new Movies("Gonnies", "1989", "Gonnies.com"),
-			new Movies("Twilight", "2008", "Twilight.com"), 
-			new Movies("Shrek", "2001", "Shrek.org"),
-			new Movies("Robocop", "1992", "Robocop.net")
-
+			new Movies("Twilight", "2008", "Twilight.com")
 	};
 	
 	public static Ratings[] rating = { 

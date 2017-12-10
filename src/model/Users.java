@@ -47,7 +47,7 @@ public class Users implements Comparable<Users> {
 				.addValue(lastName)
 				.addValue(age)
 				.addValue(gender)
-				.addValue(occupation +"\n").toString() ;
+				.addValue(occupation).toString() ;
 	}
 
 	@Override

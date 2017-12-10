@@ -10,7 +10,7 @@ public interface azureInterface {
 
 	public void store() throws Exception;
 
-	public Users createUser(String firstName, String lastName, int age, String gender, String occupation);
+	public void createUser(String firstName, String lastName, int age, String gender, String occupation);
 
 	public Users getUserByName(String name);
 

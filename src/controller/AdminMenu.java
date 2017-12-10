@@ -183,12 +183,17 @@ public class AdminMenu {
 	
 	@Command(description="Delete a Rating")
 	public void deleteRating(@Param(name="Rating Id")long id){
-//		 Users user = azureAPI.currentUser.get();
-//		if(user.ge  != id) {
-//			System.out.println("You can not delete another person rating");
-//		}else {
+		 Users user = azureAPI.currentUser.get();
+		if(user.id  != id) {
+			System.out.println("You can not delete another person rating");
+		}else {
 		azureAPI.deleteRating(id);
-		//}
+		}
+	}
+	
+	@Command(description="Recommend a movie")
+	public void recommender(@Param(name="id")Long id) {
+		azureAPI.recommender(id);
 	}
 	
 

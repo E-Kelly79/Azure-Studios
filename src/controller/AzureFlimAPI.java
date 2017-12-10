@@ -9,11 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeSet;
+import java.util.Set;
 
 import com.google.common.base.Optional;
 import model.Movies;
@@ -31,10 +33,9 @@ public class AzureFlimAPI implements azureInterface {
 	private Map<String, Movies> movieTitle = new HashMap<>();
 	public Optional<Users> currentUser;
 
-	
-	/*==========================
-	 * Constructors
-	 *=========================*/
+	/*
+	 * ========================== Constructors =========================
+	 */
 	public AzureFlimAPI() {
 
 	}
@@ -42,11 +43,10 @@ public class AzureFlimAPI implements azureInterface {
 	public AzureFlimAPI(Serializer serializer) {
 		this.serializer = serializer;
 	}
-	
-	
-	/*============================
-	 * Utils
-	 *===========================*/
+
+	/*
+	 * ============================ Utils ===========================
+	 */
 	// Login a user
 	public boolean login(Long userId, String lastName) {
 		Optional<Users> user = Optional.fromNullable(usersIndex.get(userId));
@@ -135,9 +135,9 @@ public class AzureFlimAPI implements azureInterface {
 		serializer.write();
 	}
 
-	/*===================== 
-	 * User Methods 
-	 * ===================*/
+	/*
+	 * ===================== User Methods ===================
+	 */
 
 	// Return all users in file
 	public Collection<Users> getUsers() {
@@ -153,10 +153,10 @@ public class AzureFlimAPI implements azureInterface {
 	// create a new users using @Param firstname, lastname, age, gender, occupation
 	// *hello*
 	@Override
-	public Users createUser(String firstName, String lastName, int age, String gender, String occupation) {
+	public void createUser(String firstName, String lastName, int age, String gender, String occupation) {
 		Users user = new Users(firstName, lastName, age, gender, occupation);
 		usersIndex.put(user.id, user);
-		return user;
+		// return user;
 	}
 
 	// Returns user information when searching for there first name
@@ -174,13 +174,12 @@ public class AzureFlimAPI implements azureInterface {
 	// delete user by his id
 	@Override
 	public void deleteUser(Long id) {
-		Users user = usersIndex.remove(id);
-		usersName.remove(user.firstName);
+		usersIndex.remove(id);
 	}
 
-	/*========================== 
-	 * Movie Methods 
-	 * =======================*/
+	/*
+	 * ========================== Movie Methods =======================
+	 */
 
 	// create a movie without an id
 	public void addMovies(String title, String year, String url) {
@@ -209,9 +208,9 @@ public class AzureFlimAPI implements azureInterface {
 		return movieTitle.get(title);
 	}
 
-	/*======================== 
-	 * Rating Methods 
-	 * ======================*/
+	/*
+	 * ======================== Rating Methods ======================
+	 */
 
 	@Override
 	public void addRatings(Long userID, Long movieID, int rating) {
@@ -223,12 +222,11 @@ public class AzureFlimAPI implements azureInterface {
 			user.get().userRatings.put(ratings.id, ratings); // attach user to a rating
 			movie.get().theMoviesRatings.put(ratings.id, ratings); // attach a movie to a rating
 			ratingsIndex.put(ratings.id, ratings); // add rating to a collection
-			
+
 			movie.get().ratingSystem = movie.get().ratingSystem + rating;
 
 		}
 	}
-	
 
 	public Collection<Ratings> getRatings() {
 		return ratingsIndex.values();
@@ -252,27 +250,33 @@ public class AzureFlimAPI implements azureInterface {
 	public void deleteRating(long id) {
 		ratingsIndex.remove(id);
 	}
-	
-	
+
 	public void calculateAvg() {
 		ArrayList<Movies> ratings = new ArrayList<Movies>();
 		ratings.addAll(getMovies());
-		for(int i = 0; i < ratings.size(); i++) {
-			if(ratings.get(i).ratingSystem > 0.0) {
-				sortMovies();
+		for (int i = 0; i < ratings.size(); i++) {
+			if (ratings.get(i).ratingSystem > 0.0) {
 				System.out.println(ratings.get(i).title + " " + ratings.get(i).ratingSystem);
 			}
 		}
-		
-	}
-	
-	public void sortMovies() {
-		TreeSet<Movies> sortedMovies = new TreeSet<Movies>();
-		sortedMovies.addAll(getMovies());
-		Iterator<Movies> iter = sortedMovies.iterator();
-		while(iter.hasNext()) {
-			Movies m = iter.next();
-		}
+
 	}
 
+	public void recommender(long id) {
+		Map<Long, Movies> movies = new HashMap<>();
+		movies.putAll(movieIndex);
+		Optional<Users> user = Optional.fromNullable(usersIndex.get(id));
+		Set<Long> list;
+		list = user.get().userRatings.keySet();
+		for (Long ratings : list) {
+			Ratings r1 = ratingsIndex.get(ratings);
+			ratings = r1.movieId;
+			movies.remove(ratings);
+		}
+		List<Movies> userMovies = new ArrayList<Movies>(movies.values());
+		Collections.sort(userMovies, new Movies().reversed());
+		for (Movies movie : userMovies) {
+			System.out.println(movie.title);
+		}
+	}
 }
