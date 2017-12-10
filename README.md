@@ -1,52 +1,69 @@
 # Azure Flim
+Name: Eoin Kelly
 
-This assignment was to make a movie recommender like the one netflix uses this is the first part of the assignment were we had to read in from a file then save that file as an xml file. With that done we then had to save new data to that xml file like new users and movies and also be able to look for a user by name or id and the same with movies
-
-
-## Getting Started
-To use this project please go and clone it form the clone and zip option provided by github then unzip the folder then import the project to you eclipse workspace
+## Overview.
+This assignment was give to us so that we could build a movie recommender in java with some data stractures
 
 
-## Examples
-```
-to add a new user: au john doe 33 M job
-to add a new movie am title year url hsdflsdhgsdj;sodjs;dojspdgj
-```
+## Functionality
+ . . . . . List of the functional features implemented . . . .
 
+ + Get top ten movies
+ + Recommend a movie
+ + Sort
+ + Search
+ + List all movies
+ + List all users
+ + List all ratings
 
-## Running Tests
-The test that i ran for this assignment are  i test out how the create user, tostring method , add movies,  delete files find users 
-
-### What these tests test and why
-The first test i ran was the create users this needs to be tested to enable the user to be able to create new users to the application
-if this test could not pass the the app would not have been viable to work 
-
-```
-Users eoin = new Users("Eoin", "Kelly", "38", "M", "Student");
-
-	@Test
-	public void testCreate() {
-		assertEquals("Eoin", eoin.firstName);
-		assertEquals("Kelly", eoin.lastName);
-		assertEquals("38", eoin.age);
-		assertEquals("M", eoin.gender);
-		assertEquals("Student", eoin.occupation);
-	}
-```
-
-## GUI
-i went and made a small gui that will work for the users this was built with javafx i used a borderPane to set out the window then added a menuBar with a gridpane tomarkup the userinput fields
-
-
-## Built With
-
+## Installation requirements
+. . . .  List of software, libraries and tools used (hint: everything on your build path libraries ) . . . . . . .
 * [Xstream](http://x-stream.github.io/) - Used for reading and writing files
 * [Gauva](https://github.com/google/guava) - Helpers for string methods
 * [cliche](https://sourceforge.net/projects/cliche/) - Used to make commands in the command line
-* [Javafx](http://www.oracle.com/technetwork/java/javafx/downloads/index.html) - Used to make Graphical User Interfaces
+
+## Getting started
+If you would like to use this program please downlaod the files as a zip then import them into eclipse. Once in eclipse you can run the program from the Azure.java class and log in. Example on how to log in is below
+
+```
+The Cliche Movie Shell
+Enter ?list to list available commands.
+Movies> ?list
+abbrev	name	params
+li	log-in	(user name, password)
+Azure> li 5 Parker
+Admin
+Azure/Jenna>
+```
+
+## Examples
+
+. . . . Examples of program's user interface (e.g. CLI)  (see example below) with appropriate captions ....
+- Get top ten movies
+```
+Azure/Jenna> t10
+Toy Story (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Toy%20Story%20(1995), 3}
+Babe (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Babe%20(1995), 3}
+Richard III (1995), 22-Jan-1996, http://us.imdb.com/M/title-exact?Richard%20III%20(1995), 2}
+Four Rooms (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Four%20Rooms%20(1995), 1}
+Shanghai Triad (Yao a yao yao dao waipo qiao) (1995), 01-Jan-1995, http://us.imdb.com/Title?Yao+a+yao+yao+dao+waipo+qiao+(1995), 1}
+Twelve Monkeys (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Twelve%20Monkeys%20(1995), 1}
+GoldenEye (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?GoldenEye%20(1995), 0}
+Get Shorty (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Get%20Shorty%20(1995), -1}
+Dead Man Walking (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Dead%20Man%20Walking%20(1995), -2}
+Copycat (1995), 01-Jan-1995, http://us.imdb.com/M/title-exact?Copycat%20(1995), -3}
+```
+
+- Search for a user by name:
+```
+azure/Jenna> gubn G
+George
+Gregory
+azure/Jenna>
+```
 
 ## Versioning
-This is the first version of my assignment
+This is the final version of my assignment
 
 ## Authors
 
